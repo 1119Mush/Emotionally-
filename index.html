@@ -1,939 +1,969 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎂Susan 生日快樂</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400..700&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
-    <style>
-        :root {
-            --bg: #fafafa;
-            --card-bg: #ffffff;
-            --text: #4a4a4a;
-            --secondary-text: #8e8e8e;
-            --accent: #6ea8c0;
-            --accent-light: #d4eaf0;
-            --border: #e0e0e0;
-            --shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-            --topbar-height: clamp(60px, 8vh, 70px);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌙 心靈小物研究所 · 八元素靈魂圖鑑</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F0;
+  --lavender:#D9C7FF;
+  --mint:#B8F2E6;
+  --peach:#FFD6C9;
+  --sky:#C9E4FF;
+  --ink:#4A4A4A;
+  --ink-soft:#8a8a8a;
+  --shadow:0 8px 24px rgba(120,110,160,.12);
+  --radius:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%,#FFE8F0 0%,transparent 55%),
+    radial-gradient(900px 500px at 100% 0%,#E0F0FF 0%,transparent 50%),
+    radial-gradient(800px 800px at 50% 110%,#EAE3FF 0%,transparent 55%),
+    var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:760px;margin:0 auto;padding:24px 18px 80px;position:relative;z-index:1}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.floaties{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.floaty{position:absolute;font-size:22px;opacity:.28;animation:floatUp linear infinite}
+@keyframes floatUp{
+  0%{transform:translateY(10vh) rotate(0)}
+  100%{transform:translateY(-110vh) rotate(360deg)}
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            padding-top: calc(var(--topbar-height) + 1rem);
-        }
+.card{
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:26px 22px;
+}
+.screen{display:none;animation:fadeUp .55s cubic-bezier(.2,.8,.2,1)}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-        .hearts-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
+/* 登入頁 */
+.hero{text-align:center;padding:44px 22px 36px}
+.badge{
+  display:inline-block;font-size:.75rem;letter-spacing:.18em;
+  color:#8a6fb0;background:#F0E7FF;border:1px solid #E0D0FF;
+  padding:6px 16px;border-radius:999px;margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(1.7rem,6vw,2.5rem);font-weight:700;line-height:1.35;
+  background:linear-gradient(120deg,#7B6BB5,#5B9BC7 50%,#7BB5A0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:14px;
+}
+.hero .sub{color:var(--ink-soft);font-size:clamp(.85rem,2.8vw,1rem);line-height:1.9;margin-bottom:28px}
+.orb-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.orb{
+  width:clamp(42px,11vw,54px);height:clamp(42px,11vw,54px);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(1.1rem,3.5vw,1.4rem);
+  box-shadow:0 6px 16px rgba(0,0,0,.08);border:2px solid rgba(255,255,255,.9);
+  animation:bob 3.4s ease-in-out infinite;
+}
+.orb:nth-child(2){animation-delay:.3s}
+.orb:nth-child(3){animation-delay:.6s}
+.orb:nth-child(4){animation-delay:.9s}
+.orb:nth-child(5){animation-delay:1.2s}
+.orb:nth-child(6){animation-delay:1.5s}
+.orb:nth-child(7){animation-delay:1.8s}
+.orb:nth-child(8){animation-delay:2.1s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
-        .heart {
-            position: absolute;
-            color: #7db9d0;
-            opacity: 0.25;
-            font-size: 20px;
-            animation: fall linear infinite;
-        }
+.btn{
+  display:inline-block;border:none;cursor:pointer;
+  padding:15px 40px;border-radius:999px;
+  font-size:1rem;font-weight:700;font-family:inherit;color:#fff;
+  background:linear-gradient(120deg,#9B87D9,#7BB5D9);
+  box-shadow:0 10px 24px rgba(140,120,200,.32);
+  transition:transform .18s,box-shadow .18s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(140,120,200,.4)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{
+  background:rgba(255,255,255,.9);color:#7B6BB5;
+  border:1.5px solid #DCCEFF;box-shadow:0 6px 16px rgba(160,140,210,.15);
+  padding:12px 30px;font-size:.92rem;
+}
+.btn.ghost:hover{background:#F5EEFF}
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 0.25;
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
+.disclaimer{
+  margin-top:26px;font-size:.72rem;color:#a8a0b8;line-height:1.8;
+  max-width:420px;margin-left:auto;margin-right:auto;
+}
 
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--topbar-height);
-            background: linear-gradient(135deg, #9fc9d9, #7bb3c7);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 clamp(0.5rem, 2vw, 1rem);
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
+/* 測驗頁 */
+.quiz-head{margin-bottom:18px}
+.progress-track{
+  height:10px;border-radius:999px;background:rgba(255,255,255,.75);
+  overflow:hidden;box-shadow:inset 0 1px 3px rgba(140,120,180,.15);
+}
+.progress-fill{
+  height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,#B8A4E8,#7BC7D9,#9BE0C0);
+  transition:width .4s cubic-bezier(.4,0,.2,1);
+}
+.quiz-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:12px;font-size:.8rem;color:var(--ink-soft);font-weight:500;
+}
+.q-num{font-weight:700;color:#8B76C4}
 
-        .top-bar::-webkit-scrollbar {
-            display: none;
-        }
+.q-card{padding:28px 22px}
+.q-text{
+  font-size:clamp(1.02rem,3.6vw,1.22rem);font-weight:700;line-height:1.75;
+  margin-bottom:22px;
+}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px 18px;border-radius:16px;cursor:pointer;
+  background:rgba(255,255,255,.8);
+  border:1.5px solid rgba(220,210,240,.7);
+  font-size:.94rem;line-height:1.65;font-family:inherit;color:var(--ink);
+  text-align:left;width:100%;
+  transition:all .18s;
+}
+.opt:hover{
+  border-color:#C4B0F0;background:#FBF8FF;
+  transform:translateX(4px);box-shadow:0 6px 16px rgba(160,140,220,.14);
+}
+.opt:active{transform:scale(.985)}
+.opt .key{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#EFE7FF;color:#8B76C4;font-size:.78rem;font-weight:700;
+  transition:all .18s;
+}
+.opt:hover .key{background:#8B76C4;color:#fff}
+.opt.selected{
+  border-color:#8B76C4;background:#F5EEFF;
+  box-shadow:0 0 0 3px rgba(139,118,196,.14);
+}
+.opt.selected .key{background:#8B76C4;color:#fff}
 
-        .top-bar .site-title {
-            font-size: clamp(1rem, 4vw, 1.4rem);
-            font-weight: 600;
-            color: white;
-            letter-spacing: 1px;
-            flex-shrink: 0;
-            margin-right: 0.5rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
+.nav-row{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.nav-row .btn{flex:1;padding:13px 20px;font-size:.9rem}
 
-        .nav-stories {
-            display: flex;
-            gap: clamp(6px, 2vw, 12px);
-            align-items: center;
-            flex-wrap: nowrap;
-            flex-shrink: 0;
-            padding: 4px 0; /* 增加垂直内距，避免图标贴边 */
-        }
+/* 結果頁 */
+.result-hero{text-align:center;padding:38px 22px 30px;margin-bottom:18px}
+.mascot{
+  width:clamp(120px,32vw,160px);height:clamp(120px,32vw,160px);
+  margin:0 auto 20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(3.4rem,14vw,4.6rem);
+  border:5px solid rgba(255,255,255,.95);
+  box-shadow:0 16px 40px rgba(140,120,190,.22);
+  animation:pop .7s cubic-bezier(.2,1.4,.4,1) both, glow 3.5s ease-in-out infinite 0.7s;
+}
+@keyframes pop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes glow{0%,100%{box-shadow:0 16px 40px rgba(140,120,190,.22)}50%{box-shadow:0 16px 54px rgba(140,120,190,.42)}}
 
-        .nav-stories .story-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-            min-width: 44px;
-            padding: 4px 0;
-        }
+.combo-label{
+  font-size:.72rem;letter-spacing:.22em;color:#9B8BC4;font-weight:700;margin-bottom:10px;
+}
+.combo-name{
+  font-size:clamp(1.5rem,6vw,2.1rem);font-weight:700;line-height:1.4;
+  background:linear-gradient(120deg,#7B6BB5,#5B9BC7 60%,#7BB5A0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:8px;
+}
+.combo-sub{font-size:.86rem;color:var(--ink-soft)}
 
-        .nav-stories .story-item:hover {
-            transform: scale(1.05);
-        }
+.element-chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.chip{
+  padding:7px 16px;border-radius:999px;font-size:.78rem;font-weight:700;
+  border:1.5px solid rgba(255,255,255,.9);box-shadow:0 4px 12px rgba(0,0,0,.07);
+}
+.chip.main{color:#fff}
+.chip.sub{background:rgba(255,255,255,.9)}
 
-        .nav-stories .story-ring {
-            width: clamp(44px, 12vw, 50px);  /* 手机端显著增大 */
-            height: clamp(44px, 12vw, 50px);
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.5);
-            margin-bottom: 2px;
-        }
+.section{margin-bottom:16px}
+.section h2{
+  font-size:1.05rem;font-weight:700;margin-bottom:14px;
+  display:flex;align-items:center;gap:9px;
+}
+.section h2 .ico{
+  width:32px;height:32px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  background:linear-gradient(135deg,#EFE7FF,#E0F0FF);
+}
+.section p{font-size:.92rem;line-height:2;color:#5a5a5a}
 
-        .nav-stories .story-ring i {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: clamp(1rem, 5vw, 1.3rem);
-        }
+.radar-box{display:flex;justify-content:center;padding:6px 0 4px}
+#radar{max-width:100%;height:auto}
 
-        .nav-stories .story-label {
-            font-size: clamp(0.6rem, 2.5vw, 0.75rem);
-            margin-top: 2px;
-            color: white;
-            max-width: 55px;
-            text-align: center;
-            white-space: nowrap;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
+.score-list{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.score-row{display:flex;align-items:center;gap:11px;font-size:.83rem}
+.score-row .name{width:52px;flex-shrink:0;font-weight:700}
+.score-row .bar-wrap{flex:1;height:10px;border-radius:999px;background:rgba(255,255,255,.8);overflow:hidden;box-shadow:inset 0 1px 3px rgba(140,120,180,.12)}
+.score-row .bar{height:100%;border-radius:999px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.score-row .pct{width:42px;text-align:right;flex-shrink:0;color:var(--ink-soft);font-weight:700}
 
-        #app {
-            position: relative;
-            z-index: 1;
-            max-width: 520px;
-            margin: 0 auto;
-            padding: clamp(0.5rem, 3vw, 1.5rem) clamp(0.5rem, 3vw, 1rem) 3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.share-card{
+  border-radius:22px;padding:28px 24px;text-align:center;color:#fff;
+  box-shadow:0 16px 40px rgba(120,110,160,.28);position:relative;overflow:hidden;
+}
+.share-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.35),transparent 45%),
+             radial-gradient(circle at 85% 90%,rgba(255,255,255,.25),transparent 45%);
+}
+.share-card > *{position:relative;z-index:1}
+.share-card .sc-emoji{font-size:3rem;margin-bottom:10px;display:block}
+.share-card .sc-title{font-size:1.35rem;font-weight:700;margin-bottom:6px}
+.share-card .sc-tag{font-size:.75rem;letter-spacing:.2em;opacity:.85;margin-bottom:16px}
+.share-card .sc-quote{font-size:.88rem;line-height:1.9;opacity:.96;font-style:italic}
+.share-card .sc-foot{font-size:.68rem;opacity:.75;margin-top:18px;letter-spacing:.1em}
 
-        .page {
-            display: none;
-            width: 100%;
-            animation: fadeIn 0.5s ease;
-        }
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.btn-row .btn{flex:1;min-width:140px;padding:13px 20px;font-size:.88rem}
 
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .ins-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: clamp(12px, 3vw, 20px);
-            padding: clamp(16px, 5vw, 28px);
-            margin-bottom: clamp(12px, 3vw, 24px);
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
-        }
-
-        .ins-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-        }
-
-        #home .animated-text {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
-            font-weight: 600;
-            color: var(--accent);
-            text-align: center;
-            line-height: 1.4;
-            min-height: 4rem;
-            margin: 2rem 0 1.5rem;
-        }
-
-        .animated-text span {
-            display: inline-block;
-            opacity: 0;
-            animation: bounceIn 0.6s ease forwards;
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3) translateY(40px);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1) translateY(-10px);
-            }
-            70% {
-                transform: scale(0.9) translateY(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .ins-btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: clamp(8px, 2vw, 12px) clamp(18px, 5vw, 28px);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: clamp(0.8rem, 3vw, 1.1rem);
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .ins-btn:active {
-            transform: scale(0.96);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 30;
-            backdrop-filter: blur(4px);
-        }
-
-        .modal {
-            background: white;
-            border-radius: 20px;
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            max-width: 90vw;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .modal input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 1rem;
-            margin: 1rem 0;
-            outline: none;
-        }
-
-        .modal input:focus {
-            border-color: var(--accent);
-        }
-
-        .error-msg {
-            color: #e74c3c;
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
-
-        .flip-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: clamp(6px, 2vw, 12px);
-            margin: 1rem 0;
-        }
-
-        .flip-container {
-            perspective: 800px;
-            aspect-ratio: 1;
-            cursor: pointer;
-        }
-
-        .flip-container.used {
-            cursor: default;
-        }
-
-        .flip-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-container.flipped .flip-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-front,
-        .flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(4px, 2vw, 10px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-
-        .flip-front {
-            background: linear-gradient(135deg, #eaf3f3, #dce8ea);
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-        }
-
-        .flip-back {
-            background: white;
-            transform: rotateY(180deg);
-            text-align: center;
-            line-height: 1.4;
-            color: var(--text);
-        }
-
-        .flip-back p {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(0.65rem, 2.5vw, 1rem);
-            color: #2c3e50;
-            margin: 2px 0;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            line-height: 1.3;
-        }
-
-        .flip-container.used .flip-front {
-            opacity: 0.5;
-        }
-
-        .wechat-notice {
-            background: #f0f8f8;
-            border: 1px solid #c8dce0;
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin-bottom: 1rem;
-            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-            color: #3a7a7a;
-            text-align: center;
-        }
-
-        .wechat-notice i {
-            margin-right: 4px;
-        }
-
-        #cusdis_thread {
-            min-height: clamp(280px, 50vh, 380px);
-            width: 100%;
-            position: relative;
-        }
-
-        /* 生日卡片响应式高度 */
-        .card-container {
-            perspective: 1000px;
-            width: 100%;
-            height: clamp(450px, 70vh, 700px);
-            cursor: pointer;
-        }
-
-        .birthday-card {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .birthday-card.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-front,
-        .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(1rem, 4vw, 2rem);
-        }
-
-        .card-front {
-            background: linear-gradient(145deg, #d0e2e4, #dce8ea);
-        }
-
-        .card-back {
-            background: white;
-            transform: rotateY(180deg);
-            justify-content: flex-start;
-            overflow-y: auto;
-        }
-
-        .card-front p {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 7vw, 3rem);
-            color: white;
-        }
-
-        .card-back p {
-            font-family: 'Dancing Script', cursive;
-            font-size: clamp(0.8rem, 3vw, 1.1rem);
-            line-height: 1.6;
-            color: #2c3e50;
-            margin: 0.3rem 0;
-            text-align: left;
-            word-break: break-word;
-            padding: 0 0.5rem;
-        }
-
-        .card-back .signature {
-            font-size: clamp(1rem, 3.5vw, 1.3rem);
-            font-weight: bold;
-            margin-top: 0.8rem;
-        }
-
-        .card-back .signature em {
-            font-style: normal;
-        }
-
-        .music-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: white;
-            border-radius: 50%;
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            z-index: 15;
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: var(--accent);
-            border: 1px solid var(--border);
-        }
-
-        /* 小屏幕再强化一下图标尺寸和间距 */
-        @media (max-width: 480px) {
-            .nav-stories .story-ring {
-                width: clamp(50px, 18vw, 56px);
-                height: clamp(50px, 18vw, 56px);
-            }
-            .nav-stories .story-ring i {
-                font-size: clamp(1.2rem, 6vw, 1.5rem);
-            }
-            .nav-stories {
-                gap: 10px;
-            }
-        }
-    </style>
+@media(max-width:480px){
+  .wrap{padding:16px 14px 70px}
+  .card{padding:20px 16px}
+  .q-card{padding:22px 16px}
+  .opt{padding:14px 15px;font-size:.9rem}
+  .btn{padding:14px 32px;font-size:.94rem}
+}
+</style>
 </head>
-
 <body>
+<div class="floaties" id="floaties"></div>
 
-    <div class="hearts-container" id="heartsContainer"></div>
+<div class="wrap">
 
-    <header class="top-bar">
-        <div class="site-title"> 💎 Susan's Day</div>
-        <nav class="nav-stories">
-            <div class="story-item" onclick="showPage('home')">
-                <div class="story-ring"><i class="fas fa-home"></i></div>
-                <span class="story-label">主頁</span>
-            </div>
-            <div class="story-item" onclick="showPage('profile')">
-                <div class="story-ring"><i class="fas fa-star"></i></div>
-                <span class="story-label">檔案</span>
-            </div>
-            <div class="story-item" onclick="showPage('mystery')">
-                <div class="story-ring"><i class="fas fa-gem"></i></div>
-                <span class="story-label">抽獎</span>
-            </div>
-            <div class="story-item" onclick="showPage('wishes')">
-                <div class="story-ring"><i class="fas fa-heart"></i></div>
-                <span class="story-label">祝福</span>
-            </div>
-            <div class="story-item" onclick="showCardWithPassword()">
-                <div class="story-ring"><i class="fas fa-gift"></i></div>
-                <span class="story-label">卡片</span>
-            </div>
-        </nav>
-    </header>
+<!-- ============ 登入頁 ============ -->
+<section class="screen active" id="screen-landing">
+  <div class="card hero">
+    <div class="badge">心靈小物研究所</div>
+    <h1>搵返你心島上<br>嘅專屬小物</h1>
+    <p class="sub">
+      每個人心入面都有一座「心島」，<br>
+      由八種心靈元素組成，只係比例唔同。<br>
+      答完 36 條情境題，你會遇見屬於你嘅代表物。
+    </p>
 
-    <div class="music-float" id="musicControl" onclick="toggleMusic()" title="生日歌">🎵</div>
-    <audio id="bgMusic" loop>
-        <source src="nastelbom-happy-birthday-471481.mp3" type="audio/mpeg">
-    </audio>
-
-    <div id="app">
-
-        <div id="home" class="page active">
-            <div class="animated-text" id="animatedText"></div>
-            <p style="color: var(--secondary-text); font-size: clamp(0.75rem, 2.5vw, 0.9rem); text-align: center; margin-top: 1rem;">點擊上方圖標探索更多 🦋</p>
-        </div>
-
-        <div id="profile" class="page">
-            <div class="ins-card" style="text-align:center;">
-                <img src="IMG_2411.jpeg" alt="壽星" style="width: clamp(100px, 25vw, 140px); height: clamp(100px, 25vw, 140px); border-radius:50%; object-fit:cover; border:4px solid var(--accent-light);">
-                <h2 style="font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 6vw, 2.8rem); margin: 0.5rem 0; color: var(--accent);">Susan</h2>
-                <div style="color: var(--secondary-text); line-height: 1.8; font-size: clamp(0.85rem, 2.5vw, 1rem);">
-                    <p><strong>名字：</strong>Susan</p>
-                    <p><strong>生日：</strong>7月6日</p>
-                    <p><strong>星座：</strong>巨蟹座</p>
-                    <p><strong>MBTI：</strong>ISFP</p>
-                    <p style="margin-top:1rem;">「願妳青春燦爛，未來無憂」</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="mystery" class="page">
-            <div class="ins-card">
-                <h3 style="font-weight: 500; margin-bottom: 0.5rem; font-size: clamp(1.1rem, 4vw, 1.4rem);">✨ 兌換抽獎</h3>
-                <p style="color: var(--secondary-text); font-size: clamp(0.75rem, 2.5vw, 0.9rem); text-align: center; margin-bottom: 1rem;">
-                    輸入兌換碼後，點選一張卡片翻開 💖
-                </p>
-                <div style="display:flex; gap:8px; margin-bottom: 1rem; justify-content:center;">
-                    <input type="password" id="rafflePwdInput" placeholder="輸入抽獎碼" maxlength="20" style="flex:1; padding:10px 14px; border:1px solid var(--border); border-radius:20px; font-size:0.9rem;">
-                    <button class="ins-btn" onclick="submitCode()">驗證</button>
-                </div>
-                <p class="error-msg" id="raffleError"></p>
-                <p style="color: var(--secondary-text); font-size: 0.8rem; text-align: center; margin-bottom: 0.5rem;" id="pickHint" hidden>請點擊一張卡片翻開它</p>
-                <div class="flip-grid" id="flipGrid">
-                    <p style="color: var(--secondary-text); text-align: center; width: 100%;">🔄 載入中...</p>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
-                    <p style="color: var(--secondary-text); font-size: 0.8rem; margin: 0;">
-                        剩餘可抽次數：<strong id="remainingCount">...</strong>
-                    </p>
-                    <button class="ins-btn" onclick="loadMysteryCards()" style="font-size:0.8rem; padding:6px 12px;">🔄 刷新</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="wishes" class="page">
-            <div class="ins-card">
-                <h3 style="font-weight: 500; font-size: clamp(1.1rem, 4vw, 1.4rem);">💌 給壽星的祝福（刷新滑動查看他人留言）</h3>
-                <div class="wechat-notice">
-                    <i class="fas fa-exclamation-circle"></i> 若無法留言，請用 <strong>Safari / Chrome</strong> 開啟本頁面 💌
-                </div>
-                <div id="cusdis_thread"
-                data-host="https://cusdis.com"
-                data-app-id="6553cb70-9b01-42d6-a6ac-7daa68ba38fb"
-                data-page-id="susan-birthday"
-                data-page-title="Susan 的生日祝福牆">
-            </div>
-        </div>
+    <div class="orb-row">
+      <div class="orb" style="background:#FFD6C9">🔥</div>
+      <div class="orb" style="background:#C9E4FF">🌊</div>
+      <div class="orb" style="background:#B8F2E6">🌿</div>
+      <div class="orb" style="background:#E4D9FF">✨</div>
+      <div class="orb" style="background:#D8DEE9">⚙️</div>
+      <div class="orb" style="background:#DCE6F5">🌙</div>
+      <div class="orb" style="background:#FFD6E4">🍬</div>
+      <div class="orb" style="background:#FFE8C4">🧸</div>
     </div>
 
-    <!-- 秘密生日卡 -->
-    <div id="card" class="page">
-        <div class="ins-card" style="background:transparent; border:none; box-shadow:none; padding:0;">
-            <div class="card-container" onclick="flipCard()">
-                <div class="birthday-card" id="birthdayCard">
-                    <div class="card-front">
-                        <p>🎂</p>
-                        <p style="font-size: clamp(1.1rem, 4vw, 1.6rem);">點擊翻轉</p>
-                    </div>
-                    <div class="card-back">
-                        <p>
-                            <strong>To Susan,</strong><br><br>
-                            親愛的Block 3科長，生日快樂！！！<br>
-                            這是第二次給你慶祝生日✓ 在這一年中，很高興能夠和你一起發掘更多新的事物，探索各式各樣的地方，也有機會更加了解真實的你。<br><br>
-                            你對我而言是一個很特別的存在，或許這樣說有點抽象，但你的性格感染了我，讓我學會嘗試更加投入當下去感受這個世界的人事物，嘗試不同的事情，以另一個新視角去看待這個世界，謝謝你！<br><br>
-                            願你日日過得稱心自在！新的一歲，盼你繼續成長、尋找到屬於自己的機遇與方向，也能夠嘗試去看看、了解更遠的未來🥰<br><br>
-                            <span class="signature"><em>Yanki</em></span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <button class="btn" id="btnStart" type="button">開始探索 ✦</button>
+
+    <p class="disclaimer">
+      ⚠️ 本測試為娛樂及自我反思工具，並非臨床心理診斷，<br>
+      不能代替專業心理諮詢。請以成長語言看待結果。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 測驗頁 ============ -->
+<section class="screen" id="screen-quiz">
+  <div class="quiz-head">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="quiz-meta">
+      <span class="q-num" id="qCounter">第 1 / 36 題</span>
+      <span id="qSection">日常篇</span>
     </div>
+  </div>
+
+  <div class="card q-card">
+    <div class="q-text" id="qText"></div>
+    <div class="opts" id="opts"></div>
+  </div>
+
+  <div class="nav-row">
+    <button class="btn ghost" id="btnPrev" type="button">← 上一題</button>
+    <button class="btn ghost" id="btnQuit" type="button">回首頁</button>
+  </div>
+</section>
+
+<!-- ============ 結果頁 ============ -->
+<section class="screen" id="screen-result">
+
+  <div class="card result-hero">
+    <div class="mascot" id="mascot">🌊</div>
+    <div class="combo-label">你嘅心靈元素組合</div>
+    <div class="combo-name" id="comboName">潮汐 × 月光</div>
+    <div class="combo-sub" id="comboSub">代表物：夜光水母</div>
+    <div class="element-chips" id="elementChips"></div>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">📊</span>八元素雷達圖</h2>
+    <div class="radar-box">
+      <canvas id="radar" width="600" height="600" style="width:min(100%,420px)"></canvas>
+    </div>
+    <div class="score-list" id="scoreList"></div>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">💫</span>你嘅核心</h2>
+    <p id="coreText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">🫂</span>人際</h2>
+    <p id="socialText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">💼</span>工作</h2>
+    <p id="workText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">💗</span>愛情</h2>
+    <p id="loveText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">🌧️</span>壓力</h2>
+    <p id="stressText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">🌱</span>成長練習</h2>
+    <p id="growthText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">🌑</span>陰影元素提醒</h2>
+    <p id="shadowText"></p>
+  </div>
+
+  <div class="card section">
+    <h2><span class="ico">🎀</span>分享卡</h2>
+    <div class="share-card" id="shareCard">
+      <span class="sc-emoji" id="scEmoji">🌊</span>
+      <div class="sc-title" id="scTitle">夜光水母</div>
+      <div class="sc-tag" id="scTag">潮汐 × 月光</div>
+      <div class="sc-quote" id="scQuote"></div>
+      <div class="sc-foot">心靈小物研究所 · 八元素靈魂圖鑑</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn ghost" id="btnDownload" type="button">⬇️ 下載分享卡</button>
+      <button class="btn ghost" id="btnCopy" type="button">📋 複製結果</button>
+      <button class="btn" id="btnRestart" type="button">🔄 重新測試</button>
+    </div>
+  </div>
+
+</section>
 
 </div>
 
-<div class="modal-overlay" id="passwordModal" style="display: none;">
-    <div class="modal">
-        <h3>🔐 輸入密碼打開卡片</h3>
-        <input type="password" id="pwdInput" placeholder="輸入密碼" maxlength="6">
-        <button class="ins-btn" onclick="checkPassword()">解鎖</button>
-        <p class="error-msg" id="pwdError"></p>
-    </div>
-</div>
-
-<script src="https://cusdis.com/js/cusdis.es.js"></script>
 <script>
-    const WORKER_URL = "https://sue.by-yanki.workers.dev";
-    const raffleCodes = ["202576", "202676", "5201314", "Dream", "Surprice", "Wait"];
-    const mysteryCards = [
-        { front: "🎁", back: "神秘禮物一：<br>任選一杯奶茶！<br>隨時可用" },
-        { front: "🎁", back: "神秘禮物二：<br>神秘紅包一個！" },
-        { front: "🎁", back: "神秘禮物三：<br>周邊代付卷✓<br>隨時可用" },
-        { front: "🎁", back: "神秘禮物四：<br>精選零食" },
-        { front: "🎁", back: "神秘禮物五：<br>神秘掛件<br>這個過幾天給😋" },
-        { front: "🎁", back: "神秘禮物六：<br>蛋糕一件<br>隨時可用" }
-    ];
+/* ============================================================
+   八元素資料
+   ============================================================ */
+var ELEMENTS = [
+  { key:'fire', name:'焰火', symbol:'焰', emoji:'🔥',
+    color:'#FF8C69', color2:'#FFB199',
+    core:'行動、熱情、勇氣', strong:'帶動、果斷、直接', blind:'衝動、易燒盡',
+    species:'火花小獅', deco:'小火焰尾巴', ability:'點燃行動' },
+  { key:'tide', name:'潮汐', symbol:'潮', emoji:'🌊',
+    color:'#4A90D9', color2:'#8FC4EE',
+    core:'共感、連結、情緒流動', strong:'同理、照顧、感染力', blind:'易吸收情緒、過度付出',
+    species:'泡泡海豹', deco:'水波紋', ability:'情緒共鳴' },
+  { key:'moss', name:'苔蘚', symbol:'苔', emoji:'🌿',
+    color:'#7BA05B', color2:'#B4D49A',
+    core:'穩定、扎根、耐性', strong:'可靠、實務、堅持', blind:'死板、慢熱',
+    species:'苔苔樹懶', deco:'小苔蘚帽', ability:'穩定結界' },
+  { key:'star', name:'星塵', symbol:'星', emoji:'✨',
+    color:'#A48FD9', color2:'#D0C2F0',
+    core:'想像、靈感、遠見', strong:'創意、好奇、願景', blind:'離地、欠跟進',
+    species:'星願鯨魚', deco:'星塵光環', ability:'靈感召喚' },
+  { key:'gear', name:'齒輪', symbol:'齒', emoji:'⚙️',
+    color:'#7A8699', color2:'#B4BECC',
+    core:'邏輯、系統、精準', strong:'分析、規劃、效率', blind:'過度控制、冷硬',
+    species:'齒輪倉鼠', deco:'小齒輪背包', ability:'精準分析' },
+  { key:'moon', name:'月光', symbol:'月', emoji:'🌙',
+    color:'#7B96B8', color2:'#B4C8DF',
+    core:'內省、直覺、神秘', strong:'洞察、獨立、深度', blind:'抽離、收埋自己',
+    species:'月光貓頭鷹', deco:'月牙吊墜', ability:'直覺導航' },
+  { key:'sugar', name:'糖霜', symbol:'糖', emoji:'🍬',
+    color:'#F58BAE', color2:'#FFC4D6',
+    core:'玩樂、幽默、即興', strong:'開心、靈活、冒險', blind:'散漫、承諾太多',
+    species:'棉花糖兔', deco:'糖粒斑點', ability:'即興魔法' },
+  { key:'fluff', name:'絨毛', symbol:'絨', emoji:'🧸',
+    color:'#E0A860', color2:'#FFD9A8',
+    core:'溫柔、安全感、修復', strong:'接納、療癒、陪伴', blind:'逃避衝突、委屈自己',
+    species:'暖暖圍巾熊', deco:'毛毛圍巾', ability:'療癒擁抱' }
+];
+var E = {};
+ELEMENTS.forEach(function(e,i){ e.idx=i; E[e.key]=e; });
 
-    let usedCodes = [];
-    let openedCards = [];
-    let pendingCodeIndex = -1;
+/* ============================================================
+   36 題題庫
+   ============================================================ */
+var SECTIONS = ['日常篇','社交篇','工作篇','愛情篇','壓力篇','夢想篇'];
 
-    document.getElementById('cusdis_thread').setAttribute('data-page-url', window.location.href);
+var QUESTIONS = [
+/* 1-6 日常 */
+{q:'朝早起身，你第一件想做的事：',s:0,a:[['拉開窗簾大叫「早晨！」','fire'],['攬住枕頭多五分鐘','fluff'],['睇吓今日行程同清單','gear'],['發呆幻想今日會遇到咩','star']]},
+{q:'你間房通常係：',s:0,a:[['有系統，每樣嘢有固定位置','gear'],['亂中有序，自己搵到就得','sugar'],['好多小擺設、燈、香薰','fluff'],['簡潔，留白多，似秘密基地','moon']]},
+{q:'買嘢之前，你多數：',s:0,a:[['比較規格、價錢、評價','gear'],['睇感覺，鍾意就買','tide'],['諗吓會唔會為生活帶嚟新可能','star'],['問朋友意見，一齊開心','sugar']]},
+{q:'放假最好嘅狀態：',s:0,a:[['去一個從未去過嘅地方探險','star'],['同重要嘅人一齊煮飯傾偈','tide'],['自己一個睇書、聽歌、沉澱','moon'],['喺屋企攤抖，乜都唔做','fluff']]},
+{q:'你嘅手機主頁：',s:0,a:[['分類清晰，資料夾整齊','gear'],['好多相、memo、靈感碎片','star'],['好多朋友對話置頂','tide'],['得幾頁，冇乜通知','moon']]},
+{q:'遇到突發停電，你會：',s:0,a:[['即刻搵蠟燭、檢查電箱','moss'],['覺得好浪漫，坐低睇窗外','moon'],['開手機電筒，搞個小派對','sugar'],['擔心雪櫃啲嘢，諗解決方法','gear']]},
 
-    function adjustCusdisHeight() {
-        const thread = document.getElementById('cusdis_thread');
-        if (!thread) return;
-        const iframe = thread.querySelector('iframe');
-        if (iframe) {
-            iframe.style.height = '100%';
-            const containerHeight = thread.clientHeight;
-            if (containerHeight > 0) iframe.style.height = containerHeight + 'px';
-        }
+/* 7-12 社交 */
+{q:'一大班人聚會，你通常：',s:1,a:[['係氣氛擔當，帶動全場','fire'],['留意邊個唔開心，主動關心','tide'],['同兩三個熟嘅傾深偈','moon'],['喺角落觀察，偶爾講句笑','star']]},
+{q:'朋友同你呻，你第一反應：',s:1,a:[['幫佢分析問題，諗解決方法','gear'],['先攬吓佢，話「我喺度」','fluff'],['同佢一齊鬧，情緒同步','tide'],['講個笑話令佢放鬆','sugar']]},
+{q:'你最容易同邊種人做朋友：',s:1,a:[['有想法、有夢想嘅人','star'],['穩定、可靠、唔會放飛機','moss'],['開朗、好玩、成日有新搞作','sugar'],['溫柔、識得聆聽嘅人','fluff']]},
+{q:'如果朋友遲到 30 分鐘：',s:1,a:[['冇所謂，自己睇電話等','moon'],['有少少嬲，但會直接講','fire'],['擔心佢係咪出咗事','tide'],['即刻重新規劃之後行程','gear']]},
+{q:'你嘅社交能量：',s:1,a:[['同人傾偈會叉電','tide'],['社交後要獨處回血','moon'],['睇心情，有時好想見人','sugar'],['只鍾意見少數重要嘅人','fluff']]},
+{q:'朋友話你「好特別」，你覺得係因為：',s:1,a:[['你成日有古靈精怪嘅諗法','star'],['你總係睇到別人嘅情緒','tide'],['你唔隨波逐流，有自己節奏','moon'],['你行動力強，講做就做','fire']]},
+
+/* 13-18 工作 */
+{q:'做 project 第一件事：',s:2,a:[['整時間表、分工、里程碑','gear'],['幻想最終成果，畫個願景圖','star'],['搵隊友傾吓，確認大家方向','tide'],['直接開始做，邊做邊改','fire']]},
+{q:'你最擅長嘅角色：',s:2,a:[['制定系統同流程','gear'],['帶動士氣同氣氛','fire'],['支援隊友、補位','moss'],['提出創新點子','star']]},
+{q:'遇到沉悶重複嘅工作：',s:2,a:[['搵方法自動化，提升效率','gear'],['一路聽歌一路做，自己搵樂趣','sugar'],['默默做完，當係修煉','moss'],['做做吓會發白日夢','star']]},
+{q:'Deadline 前一日：',s:2,a:[['已經做好，仲有時間檢查','moss'],['最後衝刺，腎上腺素爆發','fire'],['仲喺度諗有冇更好嘅做法','star'],['搵朋友一齊做，互相監督','tide']]},
+{q:'你嘅桌面：',s:2,a:[['整齊，文件分類清晰','gear'],['有植物、小擺設、溫暖感','fluff'],['貼滿便利貼同靈感','star'],['得必需品，簡潔','moon']]},
+{q:'如果開會有人反對你：',s:2,a:[['用數據同邏輯回應','gear'],['先理解對方感受，再搵共識','tide'],['堅持自己立場，據理力爭','fire'],['保持沉默，之後再諗','moon']]},
+
+/* 19-24 愛情 */
+{q:'你表達愛意嘅方式：',s:3,a:[['幫對方解決問題','gear'],['整小禮物、寫卡、煮飯','fluff'],['直接講「我愛你」，攬攬錫錫','fire'],['記住對方講過嘅小事','moss']]},
+{q:'你渴望嘅關係：',s:3,a:[['一齊冒險，成日有新驚喜','sugar'],['深度交流，靈魂共鳴','moon'],['穩定安心，好似屋企','moss'],['互相支持，共同成長','tide']]},
+{q:'同伴侶嗌交，你多數：',s:3,a:[['講清邏輯同對錯','gear'],['忍，唔想衝突','fluff'],['情緒爆發，講晒出嚟','fire'],['走開冷靜，之後再傾','moon']]},
+{q:'你最易被邊種人吸引：',s:3,a:[['有才華、有夢想','star'],['溫柔、識照顧人','tide'],['幽默、好玩','sugar'],['可靠、有承擔','moss']]},
+{q:'伴侶忘記紀念日：',s:3,a:[['好傷心，覺得唔被重視','tide'],['冇所謂，日日都係紀念日','sugar'],['直接講唔開心，要求補償','fire'],['自己安排節目，唔靠對方','moon']]},
+{q:'你認為愛係：',s:3,a:[['一齊建立安穩嘅未來','moss'],['互相理解同接納','fluff'],['一齊探索世界','star'],['心跳加速嘅感覺','fire']]},
+
+/* 25-30 壓力 */
+{q:'壓力大時，你會：',s:4,a:[['做運動、大叫、發洩','fire'],['搵朋友傾訴','tide'],['自己一個閉關','moon'],['整理房間、整嘢食','moss']]},
+{q:'瞓唔著嘅夜晚，你諗：',s:4,a:[['明日要做嘅事','gear'],['人生意義、未來方向','star'],['同人嘅對話、關係','tide'],['天馬行空嘅故事','sugar']]},
+{q:'你最容易因為咩崩潰：',s:4,a:[['失去控制、計劃被打亂','gear'],['被誤解、被排斥','tide'],['覺得自己冇價值','fluff'],['被困住、冇自由','star']]},
+{q:'有人話你「太敏感」：',s:4,a:[['你覺得係，容易受影響','tide'],['你會收埋自己，唔再講','moon'],['你會反駁，覺得對方唔明白','fire'],['你會笑一笑，唔放心上','sugar']]},
+{q:'你嘅避風港：',s:4,a:[['屋企張床、攬枕、毛毯','fluff'],['大自然、海邊、山','moss'],['書、音樂、創作','star'],['朋友嘅懷抱','tide']]},
+{q:'壓力過後，你最需要：',s:4,a:[['好好瞓一覺','moss'],['有人肯定你嘅努力','tide'],['獨處沉澱','moon'],['去玩、放鬆、大笑','sugar']]},
+
+/* 31-36 夢想 */
+{q:'你人生最想要：',s:5,a:[['自由，做自己鍾意嘅事','star'],['愛與連結，重要嘅人喺身邊','tide'],['穩定安全，唔使擔心','moss'],['成就，做到一番事業','fire']]},
+{q:'如果唔使擔心錢，你會：',s:5,a:[['環遊世界，探索未知','star'],['開一間溫暖嘅小店','fluff'],['研究自己好奇嘅學問','moon'],['搞慈善，幫助別人','tide']]},
+{q:'你希望別人記得你：',s:5,a:[['帶俾人歡樂','sugar'],['可靠、值得信任','moss'],['有智慧、有深度','moon'],['勇敢、有影響力','fire']]},
+{q:'你嘅秘密願望：',s:5,a:[['被完全理解同接納','tide'],['成為某方面嘅專家','gear'],['創作一件影響世界嘅作品','star'],['永遠保持自由同好奇','sugar']]},
+{q:'面對未知嘅未來，你：',s:5,a:[['興奮，期待新可能','star'],['謹慎，先做好準備','gear'],['相信船到橋頭自然直','sugar'],['希望身邊有人一齊行','tide']]},
+{q:'最後，你覺得自己似：',s:5,a:[['一團火，燃點自己同別人','fire'],['一片海，深沉又包容','tide'],['一棵樹，慢慢生長，穩穩紮根','moss'],['一顆星，靜靜發光，遙遠但明亮','moon']]}
+];
+
+/* ============================================================
+   特殊組合
+   ============================================================ */
+var SPECIAL_COMBO = {
+  'tide-moon':'夜光水母',
+  'fire-sugar':'煙花柴犬',
+  'moss-fluff':'圍巾樹懶',
+  'star-gear':'銀河狐狸',
+  'moon-star':'極光水獺',
+  'fire-fire':'營火小獅',
+  'tide-tide':'深海海豹',
+  'moon-moon':'月影貓頭鷹'
+};
+
+/* ============================================================
+   狀態
+   ============================================================ */
+var currentQ = 0;
+var answers = new Array(36).fill(null);
+var resultData = null;
+
+/* ============================================================
+   畫面切換
+   ============================================================ */
+function go(id){
+  var screens = document.querySelectorAll('.screen');
+  for(var i=0;i<screens.length;i++) screens[i].classList.remove('active');
+  var target = document.getElementById(id);
+  if(target) target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ============================================================
+   測驗流程
+   ============================================================ */
+function startQuiz(){
+  currentQ = 0;
+  answers = new Array(36).fill(null);
+  go('screen-quiz');
+  renderQ();
+}
+
+function quitQuiz(){
+  go('screen-landing');
+}
+
+function renderQ(){
+  var q = QUESTIONS[currentQ];
+  document.getElementById('qCounter').textContent = '第 ' + (currentQ+1) + ' / 36 題';
+  document.getElementById('qSection').textContent = SECTIONS[q.s];
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('progressFill').style.width = (currentQ/36*100) + '%';
+  document.getElementById('btnPrev').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+
+  var box = document.getElementById('opts');
+  box.innerHTML = '';
+  var keys = ['A','B','C','D'];
+  for(var i=0;i<q.a.length;i++){
+    (function(i){
+      var opt = q.a[i];
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'opt' + (answers[currentQ]===i ? ' selected' : '');
+      var keySpan = document.createElement('span');
+      keySpan.className = 'key';
+      keySpan.textContent = keys[i];
+      var textSpan = document.createElement('span');
+      textSpan.textContent = opt[0];
+      btn.appendChild(keySpan);
+      btn.appendChild(textSpan);
+      btn.addEventListener('click', function(){ choose(i); });
+      box.appendChild(btn);
+    })(i);
+  }
+}
+
+function choose(i){
+  answers[currentQ] = i;
+  var opts = document.querySelectorAll('.opt');
+  for(var k=0;k<opts.length;k++){
+    opts[k].classList.toggle('selected', k===i);
+  }
+  setTimeout(function(){
+    if(currentQ < 35){
+      currentQ++;
+      renderQ();
+    } else {
+      document.getElementById('progressFill').style.width = '100%';
+      finish();
     }
+  }, 240);
+}
 
-    const cusdisObserver = new MutationObserver((mutations) => {
-        for (const mutation of mutations) {
-            if (mutation.addedNodes.length > 0) {
-                const iframe = document.getElementById('cusdis_thread')?.querySelector('iframe');
-                if (iframe) {
-                    adjustCusdisHeight();
-                    setTimeout(adjustCusdisHeight, 300);
-                    setTimeout(adjustCusdisHeight, 1000);
-                    cusdisObserver.disconnect();
-                    return;
-                }
-            }
-        }
+function prevQ(){
+  if(currentQ > 0){ currentQ--; renderQ(); }
+}
+
+/* ============================================================
+   計分
+   ============================================================ */
+function finish(){
+  var scores = new Array(8).fill(0);
+  for(var qi=0; qi<36; qi++){
+    var ansIdx = answers[qi];
+    if(ansIdx === null) continue;
+    var key = QUESTIONS[qi].a[ansIdx][1];
+    scores[E[key].idx]++;
+  }
+
+  var order = scores.map(function(v,i){ return {v:v, i:i}; })
+    .sort(function(a,b){ return (b.v - a.v) || (a.i - b.i); });
+
+  var mainIdx = order[0].i;
+  var subIdx  = order[1].i;
+  var shadowIdx = order[order.length-1].i;
+  var tieMain = order[0].v === order[1].v;
+
+  resultData = { scores:scores, mainIdx:mainIdx, subIdx:subIdx, shadowIdx:shadowIdx, tieMain:tieMain };
+  renderResult();
+  go('screen-result');
+  setTimeout(function(){ drawRadar(scores); }, 80);
+}
+
+/* ============================================================
+   結果渲染
+   ============================================================ */
+function renderResult(){
+  var d = resultData;
+  var main = ELEMENTS[d.mainIdx];
+  var sub  = ELEMENTS[d.subIdx];
+  var shadow = ELEMENTS[d.shadowIdx];
+
+  var comboKey = main.key + '-' + sub.key;
+  var special = SPECIAL_COMBO[comboKey];
+  var speciesName = special || main.species;
+  var mascotEmoji = special ? getSpecialEmoji(comboKey, main, sub) : main.emoji;
+
+  document.getElementById('mascot').textContent = mascotEmoji;
+  document.getElementById('mascot').style.background = 'linear-gradient(140deg,' + main.color2 + ',' + sub.color2 + ')';
+
+  document.getElementById('comboName').textContent =
+    d.tieMain ? (main.name + ' × ' + sub.name + '（雙主元素）') : (main.name + ' × ' + sub.name);
+  document.getElementById('comboSub').textContent =
+    '代表物：' + speciesName + ' · ' + main.deco + ' · ' + sub.ability;
+
+  document.getElementById('elementChips').innerHTML =
+    '<span class="chip main" style="background:linear-gradient(120deg,' + main.color + ',' + main.color2 + ')">主 ' + main.name + ' ' + main.emoji + '</span>' +
+    '<span class="chip sub" style="color:' + sub.color + '">副 ' + sub.name + ' ' + sub.emoji + '</span>' +
+    '<span class="chip sub" style="color:' + shadow.color + ';opacity:.75">陰影 ' + shadow.name + '</span>';
+
+  var list = document.getElementById('scoreList');
+  list.innerHTML = '';
+  ELEMENTS.forEach(function(el,i){
+    var pct = Math.round(d.scores[i]/36*100);
+    var row = document.createElement('div');
+    row.className = 'score-row';
+    row.innerHTML =
+      '<span class="name" style="color:' + el.color + '">' + el.emoji + ' ' + el.name + '</span>' +
+      '<span class="bar-wrap"><span class="bar" style="background:linear-gradient(90deg,' + el.color + ',' + el.color2 + ')"></span></span>' +
+      '<span class="pct">' + pct + '%</span>';
+    list.appendChild(row);
+    setTimeout(function(){
+      row.querySelector('.bar').style.width = Math.max(pct,3) + '%';
+    }, 120 + i*70);
+  });
+
+  document.getElementById('coreText').innerHTML =
+    '你嘅主元素係 <b style="color:' + main.color + '">' + main.name + '</b>，副元素係 <b style="color:' + sub.color + '">' + sub.name + '</b>。<br><br>' +
+    main.name + '帶俾你「' + main.core + '」嘅底色，而' + sub.name + '為呢份底色加上「' + sub.core + '」嘅層次。<br><br>' +
+    '你嘅代表物係 <b>' + speciesName + '</b>——' + main.species + '嘅身體，加上' + sub.deco + '，擁有「' + sub.ability + '」嘅能力。<br><br>' +
+    '你嘅強項係：' + main.strong + '；同時帶有' + sub.strong + '。要留意嘅盲點係：' + main.blind + '，有時都會' + sub.blind + '。';
+
+  var socialMap = {
+    fire:'你係聚會入面嘅氣氛催化劑，鍾意帶動全場，行動力強。但要留意唔好衝得太快，記得留空間俾其他人跟上。',
+    tide:'你係朋友嘅情緒樹洞，容易感受到別人嘅狀態，亦善於照顧人。要小心過度吸收，學識設界線，唔好將所有人嘅重量孭上身。',
+    moss:'你係朋友眼中可靠嘅存在，唔會放飛機，慢慢建立深厚關係。但你有時太慢熱，要主動少少，俾人見到你嘅溫度。',
+    star:'你總係帶住新諗法同好奇心，朋友鍾意同你傾天馬行空嘅事。要記得偶爾落實，唔好淨係停留在想像。',
+    gear:'你係朋友圈入面嘅分析師，俾到實在嘅建議。但表達關心時可以柔軟少少，唔好只用邏輯回應情緒。',
+    moon:'你鍾意少數但深度嘅關係，唔愛應酬。你嘅洞察力強，但要小心收埋自己太深，令朋友以為你唔需要佢哋。',
+    sugar:'你係帶嚟歡樂嘅人，識得搞氣氛、識得玩。但要留意唔好承諾太多，令自己散晒。',
+    fluff:'你係朋友嘅避風港，溫柔、接納、唔批判。但你要學識表達自己嘅需要，唔好淨係委屈自己去遷就人。'
+  };
+  document.getElementById('socialText').textContent = socialMap[main.key];
+
+  var workMap = {
+    fire:'你適合需要行動力、開拓性嘅工作。你嘅推動力係團隊嘅引擎，但要避免一時衝動下決定。',
+    tide:'你適合需要同理心、溝通、協作嘅工作。你係團隊嘅潤滑劑，但要學識表達自己嘅需要，唔好淨係遷就。',
+    moss:'你適合需要耐性、細心、長期累積嘅工作。你穩定可靠，但要避免過於保守，偶爾試吓新方法。',
+    star:'你適合需要創意、策略、願景嘅工作。你嘅諗法係團隊嘅靈感來源，但要加強執行同跟進。',
+    gear:'你適合需要分析、規劃、系統化嘅工作。你嘅效率同精準度係優勢，但要留意人情味同彈性。',
+    moon:'你適合需要深度思考、獨立作業嘅工作。你嘅洞察力強，但要主動同團隊溝通，唔好收埋自己。',
+    sugar:'你適合需要靈活、創意、與人互動嘅工作。你嘅即興能力係優勢，但要建立穩定嘅工作節奏。',
+    fluff:'你適合需要陪伴、照顧、療癒嘅工作。你嘅溫柔係團隊嘅黏合劑，但要學識保護自己嘅能量。'
+  };
+  document.getElementById('workText').textContent = workMap[main.key];
+
+  var loveMap = {
+    fire:'你愛得直接、熱烈，鍾意主動表達。你需要一個識得接住你熱情、又會提醒你慢落嚟嘅人。',
+    tide:'你渴望靈魂共鳴，唔鍾意表面關係。你需要一個尊重你感受、願意同你深度交流嘅人。',
+    moss:'你重視穩定同承諾，慢慢建立信任。你需要一個同樣認真、願意一齊規劃未來嘅人。',
+    star:'你嚮往一齊探索世界嘅關係，需要有共同好奇心嘅伴侶。但要記得，穩定都需要用心經營。',
+    gear:'你用實際行動表達愛，會幫對方解決問題。但要記得，有時對方需要嘅係陪伴，唔係解決方案。',
+    moon:'你需要獨處空間，同時渴望深度連結。你需要一個明白你嘅安靜、唔會逼你嘅人。',
+    sugar:'你鍾意輕鬆、好玩嘅關係，一齊大笑最緊要。但長遠關係需要承諾，記得認真面對。',
+    fluff:'你渴望安全感同被接納。你需要一個溫柔、穩定、識得攬住你嘅人。同時要學識講出自己嘅需要。'
+  };
+  document.getElementById('loveText').textContent = loveMap[main.key];
+
+  var stressMap = {
+    fire:'壓力大時你會爆發、做運動、大叫。記得發洩完要俾自己休息，唔好燒盡。',
+    tide:'壓力大時你會想搵人傾，但亦容易吸收太多情緒。記得區分「邊啲係你嘅、邊啲係人哋嘅」。',
+    moss:'壓力大時你會埋頭做嘢、整理環境。記得有時要停低，唔好淨係用忙碌麻醉自己。',
+    star:'壓力大時你會走進幻想世界。記得將想像轉化為具體行動，會幫你重拾掌控感。',
+    gear:'壓力大時你會想控制所有細節。記得放鬆啲，唔係所有事都需要完美。',
+    moon:'壓力大時你會閉關、收埋自己。記得你可以搵人幫手，唔使一個人撐。',
+    sugar:'壓力大時你會用玩樂逃避。記得俾自己面對情緒嘅空間，唔好淨係用開心蓋過去。',
+    fluff:'壓力大時你會忍、會遷就。記得你嘅感受同樣重要，唔好委屈自己。'
+  };
+  document.getElementById('stressText').textContent = stressMap[main.key];
+
+  var growthMap = {
+    fire:'練習「停一秒」：行動之前，先深呼吸，問吓自己「呢個決定係衝動定係真心？」',
+    tide:'練習「設界線」：每日留 15 分鐘只屬於自己，唔回應任何人嘅需要。',
+    moss:'練習「試新嘢」：每星期做一件微小但唔習慣嘅事，鬆動一下慣性。',
+    star:'練習「落地」：將一個醞釀緊嘅想法，寫成三個具體步驟，今個星期完成第一步。',
+    gear:'練習「感受」：每日寫低一件令你感動嘅小事，練習用情緒詞彙描述。',
+    moon:'練習「連結」：主動同一個信任嘅人分享你嘅近況，唔好淨係收埋。',
+    sugar:'練習「承諾」：揀一件小事，堅持做 21 日，建立穩定感。',
+    fluff:'練習「表達」：每日講一次「我需要⋯⋯」，練習將自己嘅需要講出口。'
+  };
+  document.getElementById('growthText').textContent = growthMap[main.key];
+
+  document.getElementById('shadowText').innerHTML =
+    '你嘅陰影元素係 <b style="color:' + shadow.color + '">' + shadow.name + '</b>（' + shadow.core + '）。<br><br>' +
+    '呢個元素喺你心島上比較少出現，但佢代表住你內在未被滿足嘅需要。當你覺得卡住、空虛、或者反覆遇到同一種困境時，可能就係陰影元素喺度提醒你：<br><br>' +
+    '<i>「試吓俾多少少空間我，你會發現更多可能。」</i>';
+
+  var shareBg = 'linear-gradient(140deg,' + main.color + ',' + sub.color + ')';
+  var sc = document.getElementById('shareCard');
+  sc.style.background = shareBg;
+  document.getElementById('scEmoji').textContent = mascotEmoji;
+  document.getElementById('scTitle').textContent = speciesName;
+  document.getElementById('scTag').textContent = main.name + ' × ' + sub.name;
+  document.getElementById('scQuote').textContent = getQuote(main, sub, speciesName);
+}
+
+function getSpecialEmoji(key, main, sub){
+  var map = {
+    'tide-moon':'🪼',
+    'fire-sugar':'🐕',
+    'moss-fluff':'🦥',
+    'star-gear':'🦊',
+    'moon-star':'🦦'
+  };
+  return map[key] || main.emoji;
+}
+
+function getQuote(main, sub, species){
+  return '我係' + species + '。' + main.strong + '係我嘅底色，' + sub.strong + '係我嘅層次。你見到嘅我，係' + main.name + '同' + sub.name + '交織出嚟嘅溫柔。';
+}
+
+/* ============================================================
+   雷達圖
+   ============================================================ */
+function drawRadar(scores){
+  var canvas = document.getElementById('radar');
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var cx = W/2, cy = H/2 + 10;
+  var R = Math.min(W,H)*0.34;
+  var N = 8;
+  var maxScore = Math.max.apply(null, scores.concat([1]));
+
+  ctx.clearRect(0,0,W,H);
+
+  for(var ring=1; ring<=4; ring++){
+    ctx.beginPath();
+    var r = R * ring/4;
+    for(var i=0;i<N;i++){
+      var ang = -Math.PI/2 + i*2*Math.PI/N;
+      var x = cx + r*Math.cos(ang);
+      var y = cy + r*Math.sin(ang);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(150,140,190,.16)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+  for(var i=0;i<N;i++){
+    var ang = -Math.PI/2 + i*2*Math.PI/N;
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx + R*Math.cos(ang), cy + R*Math.sin(ang));
+    ctx.strokeStyle = 'rgba(150,140,190,.16)';
+    ctx.stroke();
+  }
+
+  var pts = scores.map(function(s,i){
+    var ang = -Math.PI/2 + i*2*Math.PI/N;
+    var r = R * (s / maxScore);
+    return [cx + r*Math.cos(ang), cy + r*Math.sin(ang)];
+  });
+
+  ctx.beginPath();
+  pts.forEach(function(p,i){ i===0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]); });
+  ctx.closePath();
+  var grad = ctx.createLinearGradient(cx-R, cy-R, cx+R, cy+R);
+  grad.addColorStop(0,'rgba(180,150,240,.5)');
+  grad.addColorStop(0.5,'rgba(120,190,220,.45)');
+  grad.addColorStop(1,'rgba(150,220,190,.5)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(120,110,180,.75)';
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  pts.forEach(function(p,i){
+    ctx.beginPath();
+    ctx.arc(p[0],p[1],5,0,Math.PI*2);
+    ctx.fillStyle = ELEMENTS[i].color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+
+  ctx.font = 'bold 20px "Noto Sans TC", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  for(var i=0;i<N;i++){
+    var ang = -Math.PI/2 + i*2*Math.PI/N;
+    var lr = R + 38;
+    var x = cx + lr*Math.cos(ang);
+    var y = cy + lr*Math.sin(ang);
+    ctx.fillStyle = ELEMENTS[i].color;
+    ctx.fillText(ELEMENTS[i].name, x, y);
+  }
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,3,0,Math.PI*2);
+  ctx.fillStyle = 'rgba(150,140,190,.5)';
+  ctx.fill();
+}
+
+/* ============================================================
+   分享卡下載
+   ============================================================ */
+function downloadCard(){
+  if(!resultData) return;
+  var d = resultData;
+  var main = ELEMENTS[d.mainIdx], sub = ELEMENTS[d.subIdx];
+
+  var cvs = document.createElement('canvas');
+  cvs.width = 1080; cvs.height = 1920;
+  var c = cvs.getContext('2d');
+
+  var g = c.createLinearGradient(0,0,1080,1920);
+  g.addColorStop(0, main.color);
+  g.addColorStop(1, sub.color);
+  c.fillStyle = g;
+  c.fillRect(0,0,1080,1920);
+
+  var g2 = c.createRadialGradient(300,300,50,300,300,700);
+  g2.addColorStop(0,'rgba(255,255,255,.35)');
+  g2.addColorStop(1,'rgba(255,255,255,0)');
+  c.fillStyle = g2;
+  c.fillRect(0,0,1080,1920);
+
+  var comboKey = main.key + '-' + sub.key;
+  var species = SPECIAL_COMBO[comboKey] || main.species;
+  var emoji = SPECIAL_COMBO[comboKey] ? getSpecialEmoji(comboKey, main, sub) : main.emoji;
+
+  c.textAlign = 'center';
+  c.font = '200px sans-serif';
+  c.fillText(emoji, 540, 620);
+
+  c.font = 'bold 76px "Noto Sans TC", sans-serif';
+  c.fillStyle = '#fff';
+  c.fillText(species, 540, 780);
+
+  c.font = '500 40px "Noto Sans TC", sans-serif';
+  c.fillStyle = 'rgba(255,255,255,.9)';
+  c.fillText(main.name + ' × ' + sub.name, 540, 860);
+
+  c.font = '400 36px "Noto Sans TC", sans-serif';
+  c.fillStyle = 'rgba(255,255,255,.95)';
+  wrapText(c, getQuote(main, sub, species), 540, 1040, 800, 60);
+
+  c.font = '500 28px "Noto Sans TC", sans-serif';
+  c.fillStyle = 'rgba(255,255,255,.75)';
+  c.fillText('心靈小物研究所 · 八元素靈魂圖鑑', 540, 1780);
+
+  var link = document.createElement('a');
+  link.download = '心靈小物_' + species + '.png';
+  link.href = cvs.toDataURL('image/png');
+  link.click();
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH){
+  var chars = text.split('');
+  var line = '';
+  var yy = y;
+  for(var i=0;i<chars.length;i++){
+    var test = line + chars[i];
+    if(ctx.measureText(test).width > maxW && line){
+      ctx.fillText(line, x, yy);
+      line = chars[i];
+      yy += lineH;
+    } else {
+      line = test;
+    }
+  }
+  if(line) ctx.fillText(line, x, yy);
+}
+
+/* ============================================================
+   複製結果
+   ============================================================ */
+function copyResult(){
+  if(!resultData) return;
+  var d = resultData;
+  var main = ELEMENTS[d.mainIdx], sub = ELEMENTS[d.subIdx];
+  var comboKey = main.key + '-' + sub.key;
+  var species = SPECIAL_COMBO[comboKey] || main.species;
+
+  var text =
+'🌙 心靈小物研究所 · 八元素靈魂圖鑑\n' +
+'我係 ' + species + '｜' + main.name + ' × ' + sub.name + '\n\n' +
+'「' + getQuote(main, sub, species) + '」\n\n' +
+'你嘅心靈元素係咩？嚟試吓啦 ✨';
+
+  var btn = document.getElementById('btnCopy');
+  var old = btn.textContent;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      btn.textContent = '✅ 已複製！';
+      setTimeout(function(){ btn.textContent = old; }, 1600);
+    }).catch(function(){
+      alert('複製失敗，請手動複製。');
     });
+  } else {
+    // fallback
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); btn.textContent = '✅ 已複製！'; setTimeout(function(){ btn.textContent = old; }, 1600); }
+    catch(e){ alert('複製失敗，請手動複製。'); }
+    document.body.removeChild(ta);
+  }
+}
 
-    function startObservingCusdis() {
-        const thread = document.getElementById('cusdis_thread');
-        if (thread) cusdisObserver.observe(thread, { childList: true, subtree: true });
+/* ============================================================
+   重新測試
+   ============================================================ */
+function restart(){
+  resultData = null;
+  startQuiz();
+}
+
+/* ============================================================
+   初始化：綁定事件 + 漂浮背景
+   ============================================================ */
+(function init(){
+  // 漂浮背景
+  var box = document.getElementById('floaties');
+  if(box){
+    var chars = ['🌙','✨','🫧','🍃','💫','🌸','⭐','🦋'];
+    for(var i=0;i<18;i++){
+      var s = document.createElement('span');
+      s.className = 'floaty';
+      s.textContent = chars[i % chars.length];
+      s.style.left = (Math.random()*100) + '%';
+      s.style.animationDuration = (14 + Math.random()*14) + 's';
+      s.style.animationDelay = (-Math.random()*22) + 's';
+      s.style.fontSize = (14 + Math.random()*16) + 'px';
+      box.appendChild(s);
     }
+  }
 
-    function onWishesPageActive() {
-        const thread = document.getElementById('cusdis_thread');
-        if (thread && !thread.querySelector('iframe')) startObservingCusdis();
-        adjustCusdisHeight();
-        setTimeout(adjustCusdisHeight, 300);
-        setTimeout(adjustCusdisHeight, 1000);
-    }
-
-    async function loadRaffleData() {
-        try {
-            const res = await fetch(`${WORKER_URL}/read?t=${Date.now()}`, { cache: 'no-store' });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            const data = await res.json();
-            usedCodes = Array.isArray(data.usedCodes) ? data.usedCodes : [];
-            openedCards = Array.isArray(data.openedCards) ? data.openedCards : [];
-            return true;
-        } catch (e) {
-            console.error('讀取失敗:', e);
-            return false;
-        }
-    }
-
-    async function saveOperation(useCode, openCard) {
-        const res = await fetch(`${WORKER_URL}/save`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ useCode, openCard })
-        });
-        const result = await res.json();
-        if (!res.ok || result.error) throw new Error(result.error || '儲存失敗');
-    }
-
-    function updateRemainingDisplay() {
-        const remaining = Math.min(6 - usedCodes.length, 6 - openedCards.length);
-        document.getElementById('remainingCount').textContent = remaining >= 0 ? remaining : 0;
-    }
-
-    function renderCards() {
-        const grid = document.getElementById('flipGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
-
-        mysteryCards.forEach((card, idx) => {
-            const container = document.createElement('div');
-            container.className = 'flip-container';
-            container.dataset.cardIndex = idx;
-
-            if (openedCards.includes(idx)) {
-                container.classList.add('flipped', 'used');
-                container.innerHTML = `
-                        <div class="flip-inner">
-                            <div class="flip-front">${card.front}</div>
-                            <div class="flip-back"><p>${card.back}</p></div>
-                        </div>
-                    `;
-            } else if (pendingCodeIndex >= 0) {
-                container.innerHTML = `
-                        <div class="flip-inner">
-                            <div class="flip-front">${card.front}</div>
-                            <div class="flip-back"><p>${card.back}</p></div>
-                        </div>
-                    `;
-                container.onclick = () => pickCard(idx);
-            } else {
-                container.innerHTML = `
-                        <div class="flip-inner">
-                            <div class="flip-front">${card.front}</div>
-                            <div class="flip-back"><p>${card.back}</p></div>
-                        </div>
-                    `;
-            }
-            grid.appendChild(container);
-        });
-
-        updateRemainingDisplay();
-    }
-
-    async function loadMysteryCards() {
-        const grid = document.getElementById('flipGrid');
-        if (grid) grid.innerHTML = '<p style="color: var(--secondary-text); text-align: center; width: 100%;">🔄 連線中...</p>';
-
-        const ok = await loadRaffleData();
-        if (ok) {
-            pendingCodeIndex = -1;
-            document.getElementById('pickHint').hidden = true;
-            renderCards();
-        } else {
-            if (grid) grid.innerHTML = '<p style="color:#e74c3c; text-align:center;">⚠️ 讀取失敗，請點擊「刷新同步」重試</p>';
-        }
-    }
-
-    async function submitCode() {
-        await loadRaffleData();
-        const input = document.getElementById('rafflePwdInput');
-        const errorEl = document.getElementById('raffleError');
-        const code = input.value.trim();
-        errorEl.textContent = '';
-
-        if (!code) { errorEl.textContent = '請輸入密碼'; return; }
-        const idx = raffleCodes.indexOf(code);
-        if (idx === -1) { errorEl.textContent = '密碼無效'; return; }
-        if (usedCodes.includes(idx)) { errorEl.textContent = '密碼已被使用'; return; }
-        if (openedCards.length >= 6) { errorEl.textContent = '卡片已全開'; return; }
-
-        pendingCodeIndex = idx;
-        input.value = '';
-        document.getElementById('pickHint').hidden = false;
-        renderCards();
-    }
-
-    async function pickCard(cardIdx) {
-        if (pendingCodeIndex < 0) return;
-        if (openedCards.includes(cardIdx)) return;
-
-        const errorEl = document.getElementById('raffleError');
-        try {
-            await saveOperation(pendingCodeIndex, cardIdx);
-        } catch (e) {
-            errorEl.textContent = '儲存失敗: ' + e.message;
-            return;
-        }
-
-        await loadRaffleData();
-        pendingCodeIndex = -1;
-        document.getElementById('pickHint').hidden = true;
-        renderCards();
-
-        const card = document.querySelector(`.flip-container[data-card-index="${cardIdx}"]`);
-        if (card) {
-            card.classList.add('flipped', 'used');
-            card.onclick = null;
-            confetti({ particleCount: 40, spread: 50, origin: { y: 0.7, x: 0.5 } });
-        }
-
-        if (openedCards.length === 6) {
-            setTimeout(() => {
-                confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-                alert('🎉 恭喜！所有神秘小卡都已被揭曉！');
-            }, 500);
-        }
-    }
-
-    const originalShowPage = showPage;
-    showPage = function(pageId) {
-        originalShowPage(pageId);
-        if (pageId === 'wishes') onWishesPageActive();
-        if (pageId === 'mystery') loadMysteryCards();
-    };
-
-    const correctPassword = "201076";
-    let passwordVerified = false;
-
-    function createHearts() {
-        const container = document.getElementById('heartsContainer');
-        const heartChars = ['🦋', '🫐', '✨', '💎', '🩵'];
-        for (let i = 0; i < 40; i++) {
-            const heart = document.createElement('span');
-            heart.className = 'heart';
-            heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
-            container.appendChild(heart);
-        }
-    }
-    createHearts();
-
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        if (pageId === 'home') startTextAnimation();
-        if (pageId === 'mystery') loadMysteryCards();
-    }
-
-    function startTextAnimation() {
-        const container = document.getElementById('animatedText');
-        if (!container) return;
-        const message = "Susan, Happy Birthday!";
-        container.innerHTML = '';
-        [...message].forEach((char, index) => {
-            const span = document.createElement('span');
-            span.textContent = char;
-            span.style.animationDelay = (index * 0.12) + 's';
-            container.appendChild(span);
-        });
-        const totalDuration = (message.length * 0.12 + 0.6) * 1000;
-        setTimeout(() => {
-            confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
-        }, totalDuration);
-    }
-
-    function showCardWithPassword() {
-        if (passwordVerified) showPage('card');
-        else {
-            document.getElementById('passwordModal').style.display = 'flex';
-            document.getElementById('pwdInput').value = '';
-            document.getElementById('pwdError').textContent = '';
-        }
-    }
-
-    function checkPassword() {
-        if (document.getElementById('pwdInput').value.trim() === correctPassword) {
-            passwordVerified = true;
-            document.getElementById('passwordModal').style.display = 'none';
-            showPage('card');
-        } else {
-            document.getElementById('pwdError').textContent = '密碼不對，再試一次～';
-        }
-    }
-
-    document.getElementById('passwordModal').addEventListener('click', function(e) {
-        if (e.target === this) this.style.display = 'none';
-    });
-
-    function flipCard() {
-        document.getElementById('birthdayCard').classList.toggle('flipped');
-    }
-
-    const bgMusic = document.getElementById('bgMusic');
-    let musicPlaying = false;
-
-    function toggleMusic() {
-        if (musicPlaying) {
-            bgMusic.pause();
-            document.getElementById('musicControl').textContent = '🎵';
-        } else {
-            bgMusic.play().catch(() => {});
-            document.getElementById('musicControl').textContent = '🎶';
-        }
-        musicPlaying = !musicPlaying;
-    }
-
-    document.body.addEventListener('click', function initAudio() {
-        if (!musicPlaying) {
-            bgMusic.play().then(() => {
-                musicPlaying = true;
-                document.getElementById('musicControl').textContent = '🎶';
-            }).catch(() => {});
-        }
-    }, { once: true });
-
-    window.addEventListener('load', () => {
-        startTextAnimation();
-        startObservingCusdis();
-        adjustCusdisHeight();
-        setTimeout(adjustCusdisHeight, 500);
-        setTimeout(adjustCusdisHeight, 1500);
-    });
+  // 綁定所有按鈕
+  var bindings = [
+    ['btnStart', startQuiz],
+    ['btnPrev', prevQ],
+    ['btnQuit', quitQuiz],
+    ['btnDownload', downloadCard],
+    ['btnCopy', copyResult],
+    ['btnRestart', restart]
+  ];
+  bindings.forEach(function(pair){
+    var el = document.getElementById(pair[0]);
+    if(el) el.addEventListener('click', pair[1]);
+  });
+})();
 </script>
-
 </body>
-
 </html>
