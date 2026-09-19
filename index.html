@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌙 心靈小物研究所 · 八元素靈魂圖鑑</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 :root{--cream:#FFF8F0;--ink:#4A4A4A;--ink-soft:#8a8a8a;--shadow:0 8px 24px rgba(120,110,160,.12);--radius:24px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -49,7 +48,6 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans
   box-shadow:0 10px 24px rgba(140,120,200,.32);transition:transform .18s,box-shadow .18s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(140,120,200,.4)}
 .btn:active{transform:scale(.97)}
-.btn:disabled{opacity:.6;cursor:wait}
 .btn.ghost{background:rgba(255,255,255,.9);color:#7B6BB5;border:1.5px solid #DCCEFF;
   box-shadow:0 6px 16px rgba(160,140,210,.15);padding:12px 30px;font-size:.92rem}
 .btn.ghost:hover{background:#F5EEFF}
@@ -288,7 +286,7 @@ body{font-family:'Noto Sans TC',-apple-system,BlinkMacSystemFont,'Segoe UI',sans
       <div class="sc-title" id="scTitle"></div>
       <div class="sc-tag" id="scTag"></div>
       <div class="sc-quote" id="scQuote"></div>
-      <div class="sc-foot">心靈小熱物研究所 · 八元素靈魂圖鑑</div>
+      <div class="sc-foot">心靈小物研究所 · 八元素靈魂圖鑑</div>
     </div>
     <div class="btn-row">
       <button class="btn ghost" id="btnDownload" type="button">⬇️ 下載分享卡</button>
@@ -330,7 +328,7 @@ var ELEMENTS = [
     core:'行動、熱情、勇氣', strong:'帶動、果斷、直接', blind:'衝動、易燒盡',
     species:'火花小獅', deco:'小火焰尾巴', ability:'點燃行動',
     traits:['行動派','熱情','直接','感染力強','不怕冒險'],
-    deep:'你心島上嘅焰火，係最原始嘅生命力。佢唔係盲目的衝動，而係一種「我願意為呢件事燃燒」嘅選擇。你嘅行動力源自於對生命嘅度——你唔想白過，唔想後悔。當你嘅焰火熄滅，可能唔係因為你懶，而係因為你未搵到值得燒嘅事。',
+    deep:'你心島上嘅焰火，係最原始嘅生命力。佢唔係盲目的衝動，而係一種「我願意為呢件事燃燒」嘅選擇。你嘅行動力源自於對生命嘅熱度——你唔想白過，唔想後悔。當你嘅焰火熄滅，可能唔係因為你懶，而係因為你未搵到值得燒嘅事。',
     gift:'你能喺混亂之中第一個站出嚟，喺猶豫之中第一個做決定。你嘅存在令身邊嘅人相信「可以做得到」。',
     challenge:'學習分辨「值得燒」同「一時衝動」。真正嘅火焰唔係燒得最旺，而係燒得最久、照得最遠。',
     shadowPractice:'每日揀一件你一直拖住、但其實好細嘅事，設定 5 分鐘計時，直接開始做。唔需要計劃完美，只需要「開始」。' },
@@ -360,7 +358,7 @@ var ELEMENTS = [
     shadowPractice:'每日寫低一個新想法、一個新觀察、或者一個新問題。唔需要實踐，只需要記錄。長期累積，你會發現自己嘅視野越來越闊。' },
   { key:'gear', name:'齒輪', symbol:'齒', color:'#7A8699', color2:'#B4BECC',
     core:'邏輯、系統、精準', strong:'分析、規劃、效率', blind:'過度控制、冷硬',
-    species:'齒:'輪倉鼠', deco:'小齒輪背包', ability:'精準分析',
+    species:'齒輪倉鼠', deco:'小齒輪背包', ability:'精準分析',
     traits:['理性','有系統','精準','分析力強','效率高'],
     deep:'你嘅心係一座精密嘅鐘。你相信邏輯、秩序、可預測。你唔係冷漠，而係用「解決問題」去表達關心。你要學嘅係——有時人哋唔需要答案，只需要有人陪佢一齊企喺問題入面。',
     gift:'你能夠喺混亂中建立秩序，喺問題中搵到核心。你嘅效率同精準度係團隊嘅定海神針。',
@@ -373,7 +371,7 @@ var ELEMENTS = [
     deep:'你係一個向內生長嘅人。你嘅世界有一半喺水面之下——深沉、安靜、充滿直覺。你能睇到別人睇唔到嘅細節，但你唔輕易講出口。你嘅功課係學識——唔係所有人都會誤解你，有時只係你未開門。',
     gift:'你能夠穿透表面，睇到事物嘅本質。你嘅直覺往往比分析更準，你嘅深度令人願意向你傾訴。',
     challenge:'練習「連結」。主動同一個信任嘅人分享你嘅近況，唔好淨係收埋。',
-    shadowPractice每日留 10 分鐘，關掉所有螢幕，靜坐或散步，唔做任何事。純粹觀察自己嘅思緒同行為。直覺需要空間先聽到。' },
+    shadowPractice:'每日留 10 分鐘，關掉所有螢幕，靜坐或散步，唔做任何事。純粹觀察自己嘅思緒同行為。直覺需要空間先聽到。' },
   { key:'sugar', name:'糖霜', symbol:'糖', color:'#F58BAE', color2:'#FFC4D6',
     core:'玩樂、幽默、即興', strong:'開心、靈活、冒險', blind:'散漫、承諾太多',
     species:'棉花糖兔', deco:'糖粒斑點', ability:'即興魔法',
@@ -394,7 +392,9 @@ var ELEMENTS = [
 var E = {};
 ELEMENTS.forEach(function(e,i){ e.idx=i; E[e.key]=e; });
 
-/* ============ SVG 生成器（保留） ============ */
+/* ============================================================
+   組合動物 SVG 生成器（保留）
+   ============================================================ */
 function getComboSvg(mainKey, subKey){
   var main = E[mainKey], sub = E[subKey];
   var c1 = main.color, c2 = main.color2, s1 = sub.color, s2 = sub.color2;
@@ -422,11 +422,14 @@ function getComboSvg(mainKey, subKey){
   return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">' + bodies[mainKey] + face + decorations[subKey] + '</svg>';
 }
 
+/* ============================================================
+   特殊組合 SVG
+   ============================================================ */
 var SPECIAL_SVG = {
   'tide-moon':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="jf" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#D4EAF7"/><stop offset="1" stop-color="#4A90D9"/></radialGradient></defs><path d="M 22 46 Q 22 18 50 18 Q 78 18 78 46 Q 70 52 50 52 Q 30 52 22 46 Z" fill="url(#jf)"/><circle cx="42" cy="36" r="3" fill="#fff" opacity="0.85"/><circle cx="58" cy="36" r="3" fill="#fff" opacity="0.85"/><path d="M 46 40 Q 50 43 54 40" stroke="#2c3e50" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M 32 52 Q 30 66 34 78" stroke="#8FC4EE" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 42 52 Q 40 68 44 82" stroke="#8FC4EE" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 50 52 Q 50 70 50 84" stroke="#B4C8DF" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 58 52 Q 60 68 56 82" stroke="#8FC4EE" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 68 52 Q 70 66 66 78" stroke="#8FC4EE" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 72 20 A 8 8 0 1 0 72 36 A 6 6 0 1 1 72 20 Z" fill="#B4C8DF" opacity="0.9"/></svg>',
-  'fire-sugar':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="df" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#FFD6C9"/><stop offset="1" stop-color="#E2703A"/></radialGradient></defs><circle cx="50" cy="58" r="24" fill="url(#df)"/><path d="M 28 42 L 22 26 L 38 36 Z" fill="#E2703A"/><path d="M 72 42 L 78 26 L 62 36 Z" fill="#E2703A"/><ellipse cx="50" cy="62" rx="12" ry="9" fill="#FFF1E0"/><circle cx="42" cy="54" r="3" fill="#2c2c2c"/><circle cx="58" cy="54" r="3" fill="#2c2c2c"/><circle cx="43" cy="53" r="1" fill="#fff"/><circle cx="59" cy="53" r="1" fill="#fff"/><ellipse cx="50" cy="62" rx="3.5" ry="2.8" fill="#2c2c2c"/><path d="M 50 65 L 50 68 M 46 70 Q 50 73 54 70" stroke="#2c2c2c" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M 88 30 L 91 20 M 88 30 L 96 26 M 88 30 L 94 36" stroke="#F58BAE" stroke-width="2" stroke-linecap="round"/><circle cx="88" cy="30" r="3" fill="#FFD6E4"/><path d="M 14 40 L 8 32 M 14 40 L 6 44 M 14 40 L 12 52" stroke="#F58BAE" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="40" r="2.5" fill="#FFD6E4"/></svg>',
+  'fire-sugar':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="df" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#FFD6C9"/><stop offset="1" stop-color="#E2703A"/></radialGradient></defs><circle cx="50" cy="58" r="24" fill="url(#df)"/><path d="M 28 42 L 22 26 L 38 36 Z" fill="#E2703A"/><path d="M 72 42 L 78 26 L 62 36 Z" fill="#E2703A"/><ellipse cx="50" cy="62" rx="12" ry="9" fill="#FFF1E0"/><circle cx="42" cy="54" r="3" fill="#2c2c2c"/><circle cx="58" cy="54" r="3" fill="#2c2c2c"/><circle cx="43" cy="53" r="1" fill="#fff"/><circle cx="59" cy="53" r="1" fill="#fff"/><ellipse cx="50" cy="62" rx="3.5" ry="2.8" fill="#2c2c2c"/><path d="M 50 65 L 50 68 M 46 70 Q 50 73  54 7078" stroke="#2c2 c2c" stroke-width="821.4" fill="none" Z stroke-linecap="round"/"><path d="M 88 30 L 91 20 M 88 30 L 96 26 M 88 30 L 94 36" stroke="#F58BAE" stroke-width="2" stroke-linecap="round"/><circle cx="88" cy="30" r="3" fill="#FFD6E4"/><path d="M 14 40 L 8 32 M 14 40 L 6 44 M 14 40 L 12 52" stroke="#F58BAE" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="40" r="2.5" fill="#FFD6E4"/></svg>',
   'moss-fluff':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="sf" cx="45%" cy="40%" r="65%"><stop offset="0" stop-color="#D8E8C0"/><stop offset="1" stop-color="#7BA05B"/></radialGradient></defs><circle cx="50" cy="48" r="22" fill="url(#sf)"/><ellipse cx="50" cy="60" rx="12" ry="8" fill="#FFF3D9"/><circle cx="42" cy="46" r="2.5" fill="#2c2c2c"/><circle cx="58" cy="46" r="2.5" fill="#2c2c2c"/><path d="M 46 54 Q 50 57 54 54" stroke="#2c2c2c" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M 28 32 Q 50 22 72 32 Q 64 40 50 38 Q 36 40 28 32 Z" fill="#7BA05B"/><circle cx="36" cy="32" r="2" fill="#B4D49A"/><circle cx="50" cy="28" r="2.2" fill="#B4D49A"/><circle cx="64" cy="32" r="2" fill="#B4D49A"/><path d="M 22 76 Q 22 70 32 70 Q 42 68 50 70 Q 58 68 68 70 Q 78 70 78 76 Q 78 84 68 84 L 32 84 Q 22 84 22 76 Z" fill="#E0A860"/><circle cx="24" cy="82" r="3" fill="#FFD9A8"/><circle cx="76" cy="82" r="3" fill="#FFD9A8"/><ellipse cx="28" cy="66" rx="5" ry="10" fill="#7BA05B"/><ellipse cx="72" cy="66" rx="5" ry="10" fill="#7BA05B"/></svg>',
-  'star-gear':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="xf" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#D0C2F0"/><stop offset="1" stop-color="#7A8699"/></radialGradient></defs><circle cx="50" cy="52" r="22" fill="url(#xf)"/><path d="M 28 36 L 22 18 L 40 32 Z" fill="#A48FD9"/><path d="M 72 36 L 78 18 L 60 32 Z" fill="#A48FD9"/><path d="M 28 36 L 26 24 L 36 32 Z" fill="#FFD6E4"/><path d="M 72 36 L 74 24 L 64 32 Z" fill="#FFD6E4"/><ellipse cx="50" cy="60" rx="10" ry="7" fill="#FFF8F0"/><circle cx="42" cy="50" r="3" fill="#2c2c2c"/><circle cx="58" cy="50" r="3" fill="#2c2c2c"/><circle cx="43" cy="49" r="1" fill="#fff"/><circle cx="59" cy="49" r="1" fill="#fff"/><ellipse cx="50" cy="60" rx="3" ry="2.2" fill="#2c2c2c"/><path d="M 50 62 L 50 65" stroke="#2c2c2c" stroke-width="1.3"/><circle cx="80" cy="72" r="8" fill="none" stroke="#7A8699" stroke-width="2"/><circle cx="80" cy="72" r="3" fill="#B4BECC"/><path d="M 80 60 L 82 62 L 80 64 L 78 62 Z" fill="#7A8699"/><path d="M 80 80 L 82 82 L 80 84 L 78 82 Z" fill="#7A8699"/><path d="M 68 72 L 70 70 L 72 72 L 70 74 Z" fill="#7A8699"/><path d="M 88 72 L 90 70 L 92 72 L 90 74 Z" fill="#7A8699"/><path d="M 18 26 L 21 30 L 26 30 L 22 34 L 24 39 L 18 36 L 12 39 L 14 34 L 10 30 L 15 30 Z" fill="#D0C2F0"/></svg>',
+  'star-gear':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="xf" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#D0C2F0"/><stop offset="1" stop-color="#7A8699"/></radialGradient></defs><circle cx="50" cy="52" r="22" fill="url(#xf)"/><path d="M 28 36 L 22 18 L 40 32 Z" fill="#A48FD9"/><path d="M 72 36 L 78 18 L 60 32 Z" fill="#A48FD9"/><path d="M 28 36 L 26 24 L 36 32 Z" fill="#FFD6E4"/><path d="M 72 36 L 74 24 L 64 32 Z" fill="#FFD6E4"/><ellipse cx="50" cy="60" rx="10" ry="7" fill="#FFF8F0"/><circle cx="42" cy="50" r="3" fill="#2c2c2c"/><circle cx="58" cy="50" r="3" fill="#2c2c2c"/><circle cx="43" cy="49" r="1" fill="#fff"/><circle cx="59" cy="49" r="1" fill="#fff"/><ellipse cx="50" cy="60" rx="3" ry="2.2" fill="#2c2c2c"/><path d="M 50 62 L 50 65" stroke="#2c2c2c" stroke-width="1.3"/><circle cx="80" cy="72" r="8" fill="none" stroke="#7A8699" stroke-width="2"/><circle cx="80" cy="72" r="3" fill="#B4BECC"/><path d="M 80 60 L 82 62 L 80 64 L 78 62 Z" fill="#7A8699"/><path d="M 80 80 L 82 82 L 80 84 L fill="#7A8699"/><path d="M 68 72 L 70 70 L 72 72 L 70 74 Z" fill="#7A8699"/><path d="M 88 72 L 90 70 L 92 72 L 90 74 Z" fill="#7A8699"/><path d="M 18 26 L 21 30 L 26 30 L 22 34 L 24 39 L 18 36 L 12 39 L 14 34 L 10 30 L 15 30 Z" fill="#D0C2F0"/></svg>',
   'moon-star':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="of" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B4C8DF"/><stop offset="1" stop-color="#7B96B8"/></linearGradient></defs><ellipse cx="50" cy="62" rx="26" ry="18" fill="url(#of)"/><circle cx="50" cy="42" r="17" fill="#7B96B8"/><circle cx="44" cy="40" r="2.6" fill="#2c2c2c"/><circle cx="56" cy="40" r="2.6" fill="#2c2c2c"/><circle cx="44.8" cy="39.2" r="0.9" fill="#fff"/><circle cx="56.8" cy="39.2" r="0.9" fill="#fff"/><ellipse cx="50" cy="47" rx="2.5" ry="2" fill="#2c2c2c"/><path d="M 46 52 Q 50 55 54 52" stroke="#2c2c2c" stroke-width="1.4" fill="none" stroke-linecap="round"/><circle cx="38" cy="48" r="2" fill="#FFB6C1" opacity="0.7"/><circle cx="62" cy="48" r="2" fill="#FFB6C1" opacity="0.7"/><path d="M 78 24 A 10 10 0 1 0 78 44 A 7 7 0 1 1 78 24 Z" fill="#D0C2F0"/><path d="M 22 30 L 25 35 L 30 36 L 26 40 L 27 45 L 22 42 L 17 45 L 18 40 L 14 36 L 19 35 Z" fill="#D0C2F0"/><ellipse cx="32" cy="76" rx="6" ry="3.5" fill="#B4C8DF"/><ellipse cx="68" cy="76" rx="6" ry="3.5" fill="#B4C8DF"/></svg>',
   'fire-fire':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ff" cx="50%" cy="60%" r="65%"><stop offset="0" stop-color="#FFE9B0"/><stop offset="0.6" stop-color="#FF8C69"/><stop offset="1" stop-color="#E04A30"/></radialGradient></defs><path d="M 50 6 C 58 26 76 36 74 58 C 72 78 62 88 50 88 C 38 88 28 78 26 58 C 24 36 42 26 50 6 Z" fill="url(#ff)"/><circle cx="43" cy="62" r="2.6" fill="#2c2c2c"/><circle cx="57" cy="62" r="2.6" fill="#2c2c2c"/><circle cx="43.8" cy="61.2" r="0.9" fill="#fff"/><circle cx="57.8" cy="61.2" r="0.9" fill="#fff"/><path d="M 46 69 Q 50 72 54 69" stroke="#2c2c2c" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="37" cy="68" r="2.2" fill="#FFB6C1" opacity="0.7"/><circle cx="63" cy="68" r="2.2" fill="#FFB6C1" opacity="0.7"/><path d="M 50 30 C 53 40 58 44 56 52 C 55 58 53 60 50 60 C 47 60 45 58 44 52 C 42 44 47 40 50 30 Z" fill="#FFF1C0" opacity="0.7"/></svg>',
   'tide-tide':'<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="tt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FC4EE"/><stop offset="1" stop-color="#2F6BA8"/></linearGradient></defs><ellipse cx="50" cy="64" rx="30" ry="22" fill="url(#tt)"/><circle cx="50" cy="44" r="18" fill="#4A90D9"/><circle cx="43" cy="42" r="2.6" fill="#2c2c2c"/><circle cx="57" cy="42" r="2.6" fill="#2c2c2c"/><circle cx="43.8" cy="41.2" r="0.9" fill="#fff"/><circle cx="57.8" cy="41.2" r="0.9" fill="#fff"/><ellipse cx="50" cy="50" rx="2.5" ry="2" fill="#2c2c2c"/><path d="M 44 54 Q 50 58 56 54" stroke="#2c2c2c" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M 30 56 L 26 54 M 30 60 L 25 60 M 30 64 L 26 66" stroke="#B4C8DF" stroke-width="1.2" stroke-linecap="round"/><path d="M 70 56 L 74 54 M 70 60 L 75 60 M 70 64 L 74 66" stroke="#B4C8DF" stroke-width="1.2" stroke-linecap="round"/><path d="M 22 82 Q 32 76 42 82 T 62 82 T 82 82" stroke="#8FC4EE" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M 24 88 Q 34 82 44 88 T 64 88 T 84 88" stroke="#B4C8DF" stroke-width="2" fill="none" stroke-linecap="round"/></svg>',
@@ -473,39 +476,52 @@ var SINGLE_SVG = {
   fluff:'<svg viewBox="0 0 100 100"><circle cx="30" cy="55" r="20" fill="#E0A860"/><circle cx="50" cy="40" r="22" fill="#E0A860"/><circle cx="70" cy="55" r="20" fill="#E0A860"/><circle cx="42" cy="68" r="17" fill="#FFD9A8"/><circle cx="60" cy="68" r="17" fill="#FFD9A8"/></svg>'
 };
 
-/* ============ 36 題題庫（保留強化版） ============ */
+/* ============================================================
+   36 題題庫（強化版本 — 題目更具體，部分加入畫面感）
+   ============================================================ */
 var SECTIONS = ['日常篇','社交篇','工作篇','愛情篇','壓力篇','夢想篇'];
 var QUESTIONS = [
+/* 日常 */
 {q:'凌晨十二點半，全屋靜晒。你啱啱洗完澡，頭髮仲滴住水。呢一刻你心入面最想做嘅事係：',s:0,a:[['開個 playlist，跟住節奏亂咁跳，或者做返一啲一直想試但未試嘅事','fire'],['攬住個枕頭捲埋喺床，乜都唔諗，淨係想被包住','fluff'],['攞起手機 check 吓聽日嘅 schedule 同 to-do，確認冇甩漏','gear'],['攤喺床上望住天花板，任由思緒飄去一個唔存在嘅地方','star']]},
 {q:'你搬咗新屋，第一件想佈置嘅嘢係：',s:0,a:[['一個清晰嘅收納系統，每樣嘢都要有屬於佢嘅位置','gear'],['一個可以招呼朋友、亂七八糟都好開心嘅角落','sugar'],['一盞暖黃色嘅床頭燈，加一塊好軟嘅地氈','fluff'],['一個望到窗外、可以靜靜哋坐一個下午嘅位','moon']]},
 {q:'你行過一間小店，見到一件好靚嘅嘢，但價錢貴三成。你心入面第一反應：',s:0,a:[['即刻上網搵吓同款，比較規格、價錢、評價','gear'],['望一眼，個心已經有種「係佢喇」嘅感覺，唔想再諗','tide'],['幻想佢放喺你屋企某個位會係咩畫面，值唔值','star'],['影相 send 俾朋友，問吓佢覺得點，順便約出嚟行街','sugar']]},
 {q:'難得一日完全冇安排，你心入面最理想嘅畫面係：',s:0,a:[['背個袋，去一個從未去過嘅地方，可能係離島、可能係山','star'],['同一個重要嘅人，煮飯、傾偈、慢慢過，唔需要節目','tide'],['自己一個，睇書、聽歌、寫嘢，同自己相處一日','moon'],['留喺屋企，電話靜音，乜都唔做，攤足全日','fluff']]},
 {q:'如果有人打開你部手機，佢第一眼會見到：',s:0,a:[['分類清晰嘅資料夾，連通知都整整齊齊','gear'],['大量相片、memo、截圖、靈感碎片，亂中有序','star'],['好多朋友嘅對話，成日有未讀訊息','tide'],['淨係幾頁，通知長期靜音，冇乜人搵到你','moon']]},
 {q:'颱風夜，突然停電，全屋黑晒。你嘅第一反應：',s:0,a:[['即刻搵蠟燭、檢查電箱、確認門窗安全','moss'],['覺得有啲浪漫，攞張凳坐低睇住窗外嘅風雨','moon'],['開手機電筒，搞個小型燭光 Party，順便 call 朋友','sugar'],['諗起雪櫃啲嘢、聽日嘅安排，即刻諗解決方法','gear']]},
+
+/* 社交 */
 {q:'你身處一個唔太熟嘅聚會。半個鐘之後，你發現自己：',s:1,a:[['成為咗全場焦點，帶動緊氣氛，講緊故仔','fire'],['留意到角落嗰個人好似唔開心，悄悄行去關心佢','tide'],['同兩三個人傾到好深，其他人好似唔存在','moon'],['靜靜哋觀察大家，偶爾講一句令全場笑嘅話','star']]},
 {q:'朋友半夜三點打俾你，喊住講佢失戀。你嘅第一句：',s:1,a:[['「等我幫你分析吓，佢到底邊度有問題，你下次要點揀。」','gear'],['「我喺度，你唔使一個人。你想講幾耐都得。」','fluff'],['「佢咁對你，我都好嬲！你唔好忍，你值得更好。」','tide'],['「你笑吓先啦，我而家陪你睇套笑片，唔好俾佢睇死你。」','sugar']]},
 {q:'你同一個人由陌生變朋友，通常係因為：',s:1,a:[['佢有啲想法好特別，令你忍唔住想聽多啲','star'],['佢好可靠，講得出做得到，唔會放飛機','moss'],['佢好搞笑，同佢一齊永遠唔會悶','sugar'],['佢好溫柔，識得聆聽，令你好想講嘢','fluff']]},
 {q:'朋友約你，但佢遲咗 40 分鐘先到。你心入面：',s:1,a:[['「算啦，我自己睇吓電話都得，唔使急。」','moon'],['「我會直接同佢講，我唔鍾意等，下次早啲。」','fire'],['「佢會唔會出事？使唔使打俾佢？」','tide'],['「我即刻重新規劃之後嘅行程，唔想浪費時間。」','gear']]},
 {q:'一個禮拜嘅社交之後，你嘅感覺係：',s:1,a:[['好滿足，同人傾偈令我叉滿電，仲想再約','tide'],['好攰，我需要一個人靜返幾日，唔想見人','moon'],['睇心情，有時好想見人，有時想躲起嚟','sugar'],['其實我只想見嗰兩三個重要嘅人，其他都係應酬','fluff']]},
 {q:'有人話你「好特別」。你心入面覺得，係因為：',s:1,a:[['我成日有啲古靈精怪嘅諗法，別人未必明','star'],['我總係睇到別人嘅情緒，同佢哋未講出口嘅嘢','tide'],['我唔隨波逐流，有自己嘅節奏，唔急','moon'],['我行動力強，講做就做，唔會拖泥帶水','fire']]},
+
+/* 工作 */
 {q:'一個新項目啱啱落到你手上。你第一件事會：',s:2,a:[['整時間表、分工、里程碑，按計劃推進','gear'],['先幻想最終成果，畫一個願景圖，同人講吓','star'],['搵隊友傾吓，確認大家方向一致，先建立信任','tide'],['直接開始做，邊做邊改，唔想紙上談兵','fire']]},
 {q:'喺一個團隊入面，你最自然嘅位置係：',s:2,a:[['制定系統同流程，令大家有章可循','gear'],['帶動士氣，令大家想繼續做落去','fire'],['支援隊友，邊度唔夠人我就補位，唔會爭功','moss'],['提出創新點子，帶嚟新角度，令件事有趣啲','star']]},
 {q:'你被派去做一件沉悶又重複嘅工作。你會：',s:2,a:[['搵方法自動化，令佢變得更有效率','gear'],['一路聽歌一路做，自己搵樂趣','sugar'],['默默做完，當係一種修煉，唔抱怨','moss'],['做做吓會開始發白日夢，諗緊其他更有趣嘅事','star']]},
 {q:'Deadline 前一日，你嘅狀態係：',s:2,a:[['其實已經做好，仲有時間檢查多次','moss'],['最後衝刺，腎上腺素爆發，好刺激','fire'],['仲喺度諗有冇更好嘅做法，改緊方向','star'],['搵朋友一齊做，互相監督，唔想一個人','tide']]},
 {q:'你嘅工作桌面，望落去係：',s:2,a:[['整整齊齊，文件分類清晰，連筆都擺正','gear'],['有植物、小擺設、暖光，望到會放鬆','fluff'],['貼滿便利貼同靈感碎片，似一個思考現場','star'],['淨係必需品，簡潔到有啲空，唔想有雜物','moon']]},
 {q:'開會時，有人當眾反對你嘅方案。你：',s:2,a:[['即刻攞數據同邏輯回應，就事論事','gear'],['先理解對方嘅顧慮，再搵共識','tide'],['堅持自己立場，據理力爭，唔怕衝突','fire'],['保持沉默，返去再慢慢諗，唔想即場回應','moon']]},
+
+/* 愛情 */
 {q:'你鍾意一個人，你表達嘅方式係：',s:3,a:[['幫佢解決問題，令佢生活輕鬆啲','gear'],['整小禮物、寫卡、煮飯，用細節表達','fluff'],['直接講「我愛你」，想攬就攬，唔想等','fire'],['記住佢講過嘅每件小事，然後默默做到','moss']]},
 {q:'你心入面最渴望嘅關係係：',s:3,a:[['一齊冒險，成日都有新驚喜，唔想悶','sugar'],['深度交流，靈魂層面嘅共鳴，講到凌晨','moon'],['穩定安心，好似返到屋企，唔使扮嘢','moss'],['互相支持，一齊成長，見到對方變好','tide']]},
 {q:'同伴侶嗌交，你多數會：',s:3,a:[['講清楚邏輯同對錯，唔想含糊','gear'],['忍，唔想衝突，寧願自己唔開心','fluff'],['情緒爆發，將所有感受講晒出嚟','fire'],['走開冷靜吓，等情緒落咗再傾','moon']]},
 {q:'你最容易被邊種人吸引？',s:3,a:[['有才華、有夢想、眼睛會發光嘅人','star'],['溫柔、識照顧人、令你感到被重視','tide'],['幽默、好玩、同佢一齊永遠有笑聲','sugar'],['可靠、有承擔、講得出做得到','moss']]},
 {q:'伴侶忘記咗你哋嘅紀念日。你心入面：',s:3,a:[['好傷心，覺得自己唔被重視','tide'],['冇所謂，日日都可以係紀念日','sugar'],['直接講唔開心，要求佢補償','fire'],['自己安排節目，唔靠對方都得','moon']]},
 {q:'對你嚟講，「愛」係：',s:3,a:[['一齊建立一個安穩嘅未來，有共識','moss'],['互相理解同接納，唔需要改變對方','fluff'],['一齊探索呢個世界，永遠有新鮮感','star'],['心跳加速、想見對方嘅感覺','fire']]},
+
+/* 壓力 */
 {q:'連續幾日壓力爆煲，你嘅身體最想做嘅事：',s:4,a:[['做運動、大叫、將壓力發洩出嚟','fire'],['搵一個信任嘅人，傾到凌晨，講晒出嚟','tide'],['自己一個閉關，唔見任何人，唔想講嘢','moon'],['整理房間、整嘢食，令生活回復秩序','moss']]},
 {q:'凌晨三點，你仲未瞓得着。你腦入面多數喺度諗：',s:4,a:[['明日要做嘅事，喺腦入面預演一次','gear'],['人生意義、未來方向、我到底想去邊','star'],['同某個人嘅對話，我當時係咪講錯嘢','tide'],['一啲天馬行空嘅故事同幻想','sugar']]},
 {q:'你最容易因為咩事而崩潰？',s:4,a:[['失去控制，計劃被打亂，一齊都亂晒','gear'],['被誤解、被排斥，覺得自己唔屬於任何地方','tide'],['覺得自己冇價值，唔值得被愛','fluff'],['被困住，冇自由，冇得選擇','star']]},
 {q:'有人話你「太敏感」。你心入面：',s:4,a:[['覺得係，我確實好容易受身邊影響','tide'],['我會收埋自己，以後唔再喺佢面前講','moon'],['我會反駁，覺得佢根本唔明白我','fire'],['我會笑一笑，唔想將呢句話放心上','sugar']]},
 {q:'你心入面嘅「避風港」係：',s:4,a:[['屋企張床、攬枕、毛毯嘅包圍感','fluff'],['大自然、海邊、山，一望無際嘅地方','moss'],['書、音樂、創作，屬於自己嘅世界','star'],['一個可以攬住你、唔講嘢都得嘅人','tide']]},
 {q:'一場大壓力過去，你最需要嘅係：',s:4,a:[['好好瞓一覺，等身體復原','moss'],['有人同你講「你已經做得好好」','tide'],['一個人靜吓，沉澱返自己','moon'],['出去玩、大笑、放鬆一下','sugar']]},
+
+/* 夢想 */
 {q:'如果人生可以自己揀，你最想要嘅係：',s:5,a:[['自由，做自己真心鍾意嘅事','star'],['愛與連結，重要嘅人一直都喺身邊','tide'],['穩定同安全，唔使日日擔心','moss'],['成就，做到一番屬於自己嘅事業','fire']]},
 {q:'如果唔使擔心錢，你會第一時間：',s:5,a:[['環遊世界，去探索未知嘅地方','star'],['開一間溫暖嘅小店，招呼朋友','fluff'],['研究一個自己一直好奇嘅學問','moon'],['搞慈善，幫助有需要嘅人','tide']]},
 {q:'你希望離開之後，別人記得你係：',s:5,a:[['一個帶俾人歡樂嘅人','sugar'],['一個可靠、值得信任嘅人','moss'],['一個有智慧、有深度嘅人','moon'],['一個勇敢、有影響力嘅人','fire']]},
@@ -514,7 +530,9 @@ var QUESTIONS = [
 {q:'最後一題：如果要用一句話形容自己，你會揀：',s:5,a:[['「我係一團火，燃點自己，亦燃點別人。」','fire'],['「我係一片海，深沉、包容、有潮汐。」','tide'],['「我係一棵樹，慢慢生長，穩穩扎根。」','moss'],['「我係一顆星，靜靜發光，遙遠但明亮。」','moon']]}
 ];
 
-/* ============ 狀態 ============ */
+/* ============================================================
+   狀態
+   ============================================================ */
 var currentQ = 0;
 var answers = new Array(36).fill(null);
 var resultData = null;
@@ -592,7 +610,9 @@ function finish(){
   setTimeout(function(){ drawRadar(scores); }, 80);
 }
 
-/* ============ 結果渲染 ============ */
+/* ============================================================
+   結果渲染（加入組合式個性化文案）
+   ============================================================ */
 function renderResult(){
   var d = resultData;
   var main = ELEMENTS[d.mainIdx], sub = ELEMENTS[d.subIdx], shadow = ELEMENTS[d.shadowIdx];
@@ -618,6 +638,7 @@ function renderResult(){
     '<span class="chip sub" style="color:' + sub.color + '">副 ' + sub.name + '</span>' +
     '<span class="chip sub" style="color:' + shadow.color + ';opacity:.75">陰影 ' + shadow.name + '</span>';
 
+  /* 元素圖鑑 */
   var list = document.getElementById('scoreList');
   list.innerHTML = '';
   d.order.forEach(function(item, rank){
@@ -642,6 +663,7 @@ function renderResult(){
     row.addEventListener('click', function(){ openElementModal(item.i); });
   });
 
+  /* 心島座標：六個章節各自嘅主導元素 */
   var coordLines = [];
   SECTIONS.forEach(function(name, sIdx){
     var arr = d.sectionScores[sIdx];
@@ -650,7 +672,7 @@ function renderResult(){
     if(maxV === 0) return;
     var el = ELEMENTS[maxI];
     coordLines.push(
-      '<b style="color:' + el.color + '">' + name + '</b>：' + el.name +
+      '<b style="color:' + el.color + '">' + name + '</b>：' + el.name + ' ' + el.emoji +
       '（' + maxV + ' 次）'
     );
   });
@@ -658,6 +680,7 @@ function renderResult(){
     '你唔係一個單一嘅人——每個生活場景，你都會啟動唔同嘅元素。以下係你喺六個面向嘅主導傾向：<br><br>' +
     coordLines.join('<br>');
 
+  /* 核心描述 */
   var speciesDesc;
   if (isSpecial) {
     speciesDesc =
@@ -676,6 +699,16 @@ function renderResult(){
     speciesDesc + '<br><br>' +
     '你嘅強項係：' + main.strong + '；同時帶有' + sub.strong + '。要留意嘅盲點係：' + main.blind + '，有時都會' + sub.blind + '。';
 
+  /* ---- 個性化：根據主副組合生成嘅互動描述 ---- */
+  function pairText(){
+    var p = main.key + '-' + sub.key;
+    var custom = PAIR_TEXTS[p];
+    if(custom) return custom;
+    return null;
+  }
+  var pair = pairText();
+
+  /* 人際 */
   var socialMap = {
     fire:'你係聚會入面嘅氣氛催化劑，鍾意帶動全場，行動力強。你嘅熱情可以點燃氣氛，但要留意唔好衝得太快，記得留空間俾其他人跟上——有時你嘅「快」，會令慢熱嘅朋友覺得自己追唔上。',
     tide:'你係朋友嘅情緒樹洞，容易感受到別人嘅狀態，亦善於照顧人。你嘅存在令身邊嘅人覺得被理解。但要小心過度吸收——你經常分唔清「邊啲情緒係人哋嘅、邊啲係你自己嘅」。學識設界線，唔好將所有人嘅重量孭上身。',
@@ -686,8 +719,10 @@ function renderResult(){
     sugar:'你係帶嚟歡樂嘅人，識得搞氣氛、識得玩。你嘅幽默係一種天賦。但要留意唔好承諾太多，令自己散晒——你有時答應咗之後，其實冇心力去做。你都需要被認真對待嘅時刻。',
     fluff:'你係朋友嘅避風港，溫柔、接納、唔批判。你嘅存在令人放鬆。但你要學識表達自己嘅需要——你太習慣「我冇所謂」，久而久之，朋友真係以為你冇所謂。你嘅感受同樣重要。'
   };
-  document.getElementById('socialText').innerHTML = socialMap[main.key];
+  var socialExtra = pair ? pair.social : '';
+  document.getElementById('socialText').innerHTML = socialMap[main.key] + (socialExtra ? '<br><br>' + socialExtra : '');
 
+  /* 工作 */
   var workMap = {
     fire:'你適合需要行動力、開拓性嘅工作。你嘅推動力係團隊嘅引擎，你嘅存在令事情由「諗」變成「做」。但要避免一時衝動下決定——你嘅熱情有時會蓋過細節，學識停一秒再行動。',
     tide:'你適合需要同理心、溝通、協作嘅工作。你係團隊嘅潤滑劑，能夠令唔同人走埋一齊。但要學識表達自己嘅需要——你成日幫人補位，但你嘅付出未必有人見到。',
@@ -698,8 +733,10 @@ function renderResult(){
     sugar:'你適合需要靈活、創意、與人互動嘅工作。你嘅即興能力係優勢，你能夠喺壓力中保持輕鬆。但要建立穩定嘅工作節奏——你有時太靠靈感，靈感一走就停滯。',
     fluff:'你適合需要陪伴、照顧、療癒嘅工作。你嘅溫柔係團隊嘅黏合劑，你能令人感到安全。但要學識保護自己嘅能量——你太容易被人消耗，唔好耗盡自己。'
   };
-  document.getElementById('workText').innerHTML = workMap[main.key];
+  var workExtra = pair ? pair.work : '';
+  document.getElementById('workText').innerHTML = workMap[main.key] + (workExtra ? '<br><br>' + workExtra : '');
 
+  /* 愛情 */
   var loveMap = {
     fire:'你愛得直接、熱烈，鍾意主動表達。你需要一個識得接住你熱情、又會提醒你慢落嚟嘅人。你嘅愛係一種行動，唔係一種等待——但有時你嘅快，會令對方覺得有壓力，學識等吓。',
     tide:'你渴望靈魂共鳴，唔鍾意表面關係。你需要一個尊重你感受、願意同你深度交流嘅人。你嘅愛係一種陪伴，一種理解——但要小心你太易感受到對方情緒，變成兩個人一齊沉。',
@@ -710,8 +747,10 @@ function renderResult(){
     sugar:'你鍾意輕鬆、好玩嘅關係，一齊大笑最緊要。但長遠關係需要承諾——你有時太怕被困住，會用玩樂去逃避認真嘅對話。記得，深度同玩樂唔係對立。',
     fluff:'你渴望安全感同被接納。你需要一個溫柔、穩定、識得攬住你嘅人。同時要學識講出自己嘅需要——你太習慣遷就，唔好假設對方會自動明白。'
   };
-  document.getElementById('loveText').innerHTML = loveMap[main.key];
+  var loveExtra = pair ? pair.love : '';
+  document.getElementById('loveText').innerHTML = loveMap[main.key] + (loveExtra ? '<br><br>' + loveExtra : '');
 
+  /* 壓力 */
   var stressMap = {
     fire:'壓力大時你會爆發、做運動、大叫。記得發洩完要俾自己休息——你嘅能量需要被釋放，但亦需要被補充。唔好將「撐住」當成美德。',
     tide:'壓力大時你會想搵人傾，但亦容易吸收太多情緒。記得區分「邊啲係你嘅、邊啲係人哋嘅」——你唔需要為所有人嘅情緒負責，尤其係你已經咁攰嘅時候。',
@@ -722,8 +761,10 @@ function renderResult(){
     sugar:'壓力大時你會用玩樂逃避。記得俾自己面對情緒嘅空間——你唔係唔可以開心，但唔好淨係用開心蓋過去。真正嘅輕鬆，係面對之後嘅釋然。',
     fluff:'壓力大時你會忍、會遷就。記得你嘅感受同樣重要——你唔好委屈自己。你嘅溫柔需要邊界，否則會變成傷害自己嘅刀。'
   };
-  document.getElementById('stressText').innerHTML = stressMap[main.key];
+  var stressExtra = pair ? pair.stress : '';
+  document.getElementById('stressText').innerHTML = stressMap[main.key] + (stressExtra ? '<br><br>' + stressExtra : '');
 
+  /* 成長 */
   var growthMap = {
     fire:'練習「停一秒」：行動之前，先深呼吸三次，問吓自己「呢個決定係衝動定係真心？」',
     tide:'練習「設界線」：每日留 15 分鐘只屬於自己，唔回應任何人嘅需要，練習拒絕一次。',
@@ -734,8 +775,10 @@ function renderResult(){
     sugar:'練習「承諾」：揀一件小事，堅持做 21 日，建立穩定感，俾自己一個完成嘅體驗。',
     fluff:'練習「表達」：每日講一次「我需要⋯⋯」，練習將自己嘅需要講出口，你值得被聽見。'
   };
-  document.getElementById('growthText').innerHTML = growthMap[main.key];
+  var growthExtra = pair ? pair.growth : '';
+  document.getElementById('growthText').innerHTML = growthMap[main.key] + (growthExtra ? '<br><br>' + growthExtra : '');
 
+  /* 陰影元素 */
   document.getElementById('shadowText').innerHTML =
     '你嘅陰影元素係 <b style="color:' + shadow.color + '">' + shadow.name + '</b>（' + shadow.core + '）。<br><br>' +
     '呢個元素喺你心島上比較少出現。佢唔係缺點，而係你內在未被充分發展嘅一面——' +
@@ -746,6 +789,7 @@ function renderResult(){
     '<b style="color:' + shadow.color + '">專屬你嘅發展練習：</b><br>' +
     shadow.shadowPractice;
 
+  /* 分享卡 */
   var sc = document.getElementById('shareCard');
   sc.style.background = 'linear-gradient(140deg,' + main.color + ',' + sub.color + ')';
   document.getElementById('scSvg').innerHTML = mascotSvg;
@@ -765,7 +809,71 @@ function renderResult(){
   document.getElementById('scQuote').textContent = quoteText;
 }
 
-/* ============ Modal ============ */
+/* ============================================================
+   主副組合嘅個性化補充文案（14 個常見組合 × 5 個面向）
+   ============================================================ */
+var PAIR_TEXTS = {
+  'star-moon': {
+    social:'你嘅星塵 × 月光組合，令你成為一個「外冷內熱」嘅朋友——你未必第一個出聲，但你嘅觀察力令你成日睇穿朋友嘅狀態。你唔係唔想社交，只係你嘅社交方式係「深度」。',
+    work:'你嘅工作方式係「先諗清楚，再一次過爆發」。你嘅靈感需要獨處空間先醞釀出嚟，所以唔好迫自己喺會議室即場發揮。',
+    love:'你渴望嘅係「精神伴侶」——一個可以同你傾到凌晨、明白你天馬行空嘅人。但你亦需要獨處，唔好因為怕對方唔開心而委屈自己。',
+    stress:'你嘅壓力通常嚟自「想得太多」。試吓將腦入面嘅嘢寫出嚟——寫低咗，就唔需要一直喺腦入面轉。',
+    growth:'練習將一個想法，用最醜嘅方式開始——唔需要完美，只需要存在。'
+  },
+  'star-gear': {
+    social:'你嘅星塵 × 齒輪組合，令你成為「有趣嘅分析師」——你能夠睇到大方向，亦能落到細節，但你有時會喺朋友面前太急住「幫佢哋諗通」，忽略咗佢哋只想被聆聽。',
+    work:'你嘅強項係「由 0 到 1」——你能夠喺空白之中建構出系統。但你嘅挑戰係「由 1 到 100」，需要有人幫你守住細節。',
+    love:'你嘅愛係「為對方設計一個更好嘅未來」，但有時對方只想要你「陪佢坐吓」，唔需要你「解決問題」。',
+    stress:'壓力大時你會想「計清楚先」，但情緒唔係數學題——有時你只需要講出感受，唔需要答案。',
+    growth:'練習講「我覺得」，而唔係「我分析」。'
+  },
+  'fire-sugar': {
+    social:'你嘅焰火 × 糖霜組合，令你成為「全場最亮嘅人」——你有火嘅能量、糖嘅幽默，可以將沉悶嘅空氣一秒點燃。但你要留意唔好燒到自己——你嘅熱情係有限嘅資源。',
+    work:'你適合需要創意、行動、搞氣氛嘅工作。但你要學識「收火」——唔係所有項目都需要你衝最前。',
+    love:'你嘅愛係「一齊玩、一齊笑、一齊冒險」。但長遠關係需要你落腳，唔好每次遇到沉悶就想走。',
+    stress:'壓力大時你會用玩樂發洩，但玩完之後，問題可能仲喺度。學識停一秒，問吓自己「我係咪喺度逃避」。',
+    growth:'練習「停低」。'
+  },
+  'moss-fluff': {
+    social:'你嘅苔蘚 × 絨毛組合，令你成為「朋友嘅避風港」——你穩定、可靠、溫柔，朋友會想倚靠你。但你要小心，你太習慣「照顧人」，唔好忘記自己都需要被照顧。',
+    work:'你係團隊嘅地基，冇咗你，好多嘢會冧。但你太習慣做「隱形功臣」，要學識攞返應有嘅認可。',
+    love:'你嘅愛係「穩定同承諾」，但有時你太習慣「等對方」，唔好怕主動提出你想要嘅嘢。',
+    stress:'壓力大時你會攬晒上身。記得你唔係要拯救所有人——你只需要做你自己嗰份。',
+    growth:'練習「講出你嘅需要」。'
+  },
+  'tide-moon': {
+    social:'你嘅潮汐 × 月光組合，令你成為「朋友嘅情緒樹洞」——你感受到別人嘅情緒，亦需要獨處沉澱。你嘅溫柔有深度，好似夜晚海面嘅月光。',
+    work:'你適合需要同理心、深度思考嘅工作。你係團隊嘅潤滑劑，但要學識保護自己嘅能量——唔好將所有人嘅情緒都攬上身。',
+    love:'你渴望靈魂共鳴，唔鍾意表面關係。你需要一個尊重你獨處時間、又願意同你深度交流嘅人。',
+    stress:'壓力大時你會退縮、收埋自己。記得你可以搵人幫手——你唔需要一個人撐。',
+    growth:'練習「設界線」。'
+  },
+  'fire-fire': {
+    social:'你嘅焰火 × 焰火組合，令你成為「雙倍嘅火」——你嘅熱情係一種傳染，你嘅行動力可以帶動全場。但你要留意，你嘅火有時會燒傷身邊人。',
+    work:'你係天生嘅開拓者，但唔適合做守成嘅工作——你需要有挑戰嘅任務。',
+    love:'你愛得直接、熱烈。但你需要一個識得接住你嘅熱情、又會提醒你慢落嚟嘅人。',
+    stress:'壓力大時你會爆發，但爆發之後，記得好好休息——唔好燒盡。',
+    growth:'練習「停一秒」。'
+  },
+  'tide-tide': {
+    social:'你嘅潮汐 × 潮汐組合，令你成為「深海」——你能感受好多情緒，亦願意承載。但你要小心，你嘅心唔係無底洞。',
+    work:'你適合需要深度連結、陪伴、療癒嘅工作。但你要學識保護自己嘅能量。',
+    love:'你渴望深度連結，你嘅愛係「願意為對方沉入海底」。但唔好忘記，你都有需要被救援嘅時候。',
+    stress:'壓力大時你會退縮。記得，你唔需要為所有人嘅情緒負責。',
+    growth:'練習「照顧自己」。'
+  },
+  'moon-moon': {
+    social:'你嘅月光 × 月光組合，令你成為「月影」——你嘅世界深不見底，你嘅直覺好準，你能睇穿別人睇唔到嘅嘢。但你要小心，你嘅沉默令人以為你唔在乎。',
+    work:'你適合需要深度思考、獨立作業、直覺判斷嘅工作。',
+    love:'你需要一個明白你嘅安靜、唔會逼你嘅人。你嘅愛係一種默契。',
+    stress:'壓力大時你會閉關。記得開一扇門，光會入嚟。',
+    growth:'練習「被看見」。'
+  }
+};
+
+/* ============================================================
+   Modal
+   ============================================================ */
 function openElementModal(idx){
   var el = ELEMENTS[idx];
   var pct = Math.round(resultData.scores[idx]/36*100);
@@ -790,7 +898,9 @@ function openElementModal(idx){
 }
 function closeModal(){ document.getElementById('modal').classList.remove('active'); }
 
-/* ============ 雷達圖 ============ */
+/* ============================================================
+   雷達圖
+   ============================================================ */
 function drawRadar(scores){
   var canvas = document.getElementById('radar');
   var ctx = canvas.getContext('2d');
@@ -851,44 +961,116 @@ function drawRadar(scores){
 }
 
 /* ============================================================
-   ★ 分享卡下載（新方法：用 html2canvas 直接截圖分享卡 DOM）
+   ★ 分享卡下載（修正：用 SVG 轉圖片方式）
    ============================================================ */
-function downloadCard(){
-  if(!resultData) return;
-  var card = document.getElementById('shareCard');
-  if(!card) return;
-
-  var btn = document.getElementById('btnDownload');
-  var old = btn.textContent;
-  btn.textContent = '⏳ 生成中...';
-  btn.disabled = true;
-
-  // 讓分享卡臨時變成一個較大、清晰嘅版本，然後截圖
-  // 用 scale:3 提升解析度，得到高清 PNG
-  html2canvas(card, {
-    scale: 3,
-    backgroundColor: null,
-    useCORS: true,
-    allowTaint: true,
-    logging: false,
-    width: card.offsetWidth,
-    height: card.offsetHeight
-  }).then(function(canvas){
-    var speciesName = document.getElementById('scTitle').textContent;
-    var link = document.createElement('a');
-    link.download = '心靈小物_' + speciesName + '.png';
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-    btn.textContent = old;
-    btn.disabled = false;
-  }).catch(function(err){
-    console.error('截圖失敗:', err);
-    alert('下載失敗，請再試一次');
-    btn.textContent = old;
-    btn.disabled = false;
+function svgToImage(svgString){
+  return new Promise(function(resolve, reject){
+    // 確保 SVG 有 xmlns 同 width/height
+    var s = svgString;
+    if(s.indexOf('xmlns=') === -1){
+      s = s.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ');
+    }
+    s = s.replace('<svg ', '<svg width="400" height="400" ');
+    var blob = new Blob([s], {type:'image/svg+xml;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var img = new Image();
+    img.onload = function(){
+      URL.revokeObjectURL(url);
+      resolve(img);
+    };
+    img.onerror = function(e){
+      URL.revokeObjectURL(url);
+      reject(e);
+    };
+    img.src = url;
   });
 }
 
+function downloadCard(){
+  if(!resultData) return;
+  var d = resultData;
+  var main = ELEMENTS[d.mainIdx], sub = ELEMENTS[d.subIdx];
+  var comboKey = main.key + '-' + sub.key;
+  var speciesName = getComboName(main.key, sub.key);
+  var isSpecial = !!SPECIAL_COMBO[comboKey];
+  var mascotSvg = getComboIcon(main.key, sub.key);
+
+  svgToImage(mascotSvg).then(function(img){
+    var cvs = document.createElement('canvas');
+    cvs.width = 1080; cvs.height = 1920;
+    var c = cvs.getContext('2d');
+
+    // 背景漸層
+    var g = c.createLinearGradient(0,0,1080,1920);
+    g.addColorStop(0, main.color); g.addColorStop(1, sub.color);
+    c.fillStyle = g; c.fillRect(0,0,1080,1920);
+
+    // 光暈
+    var g2 = c.createRadialGradient(300,300,50,300,300,700);
+    g2.addColorStop(0,'rgba(255,255,255,.35)');
+    g2.addColorStop(1,'rgba(255,255,255,0)');
+    c.fillStyle = g2; c.fillRect(0,0,1080,1920);
+
+    // 白色圓底
+    c.beginPath(); c.arc(540, 560, 230, 0, Math.PI*2);
+    c.fillStyle = 'rgba(255,255,255,.92)'; c.fill();
+
+    // 繪製動物 SVG
+    c.drawImage(img, 340, 360, 400, 400);
+
+    // 物種名
+    c.font = 'bold 80px "Noto Sans TC", sans-serif';
+    c.fillStyle = '#fff';
+    c.textAlign = 'center';
+    c.fillText(speciesName, 540, 960);
+
+    // 組合名
+    c.font = '500 44px "Noto Sans TC", sans-serif';
+    c.fillStyle = 'rgba(255,255,255,.92)';
+    c.fillText(main.name + ' × ' + sub.name, 540, 1040);
+
+    // 引言
+    c.font = '400 40px "Noto Sans TC", sans-serif';
+    c.fillStyle = 'rgba(255,255,255,.96)';
+    var line1 = isSpecial
+      ? '我係' + speciesName + '。'
+      : '我係' + speciesName + '。';
+    var line2 = isSpecial
+      ? '呢個係一個罕見嘅獨特組合。'
+      : main.strong + '係我嘅底色，';
+    var line3 = isSpecial
+      ? ''
+      : sub.strong + '係我嘅層次。';
+    wrapText(c, line1, 540, 1240, 820, 60);
+    wrapText(c, line2, 540, 1310, 820, 60);
+    if(line3) wrapText(c, line3, 540, 1380, 820, 60);
+
+    // footer
+    c.font = '500 30px "Noto Sans TC", sans-serif';
+    c.fillStyle = 'rgba(255,255,255,.8)';
+    c.fillText('心靈小物研究所 · 八元素靈魂圖鑑', 540, 1780);
+
+    // 下載
+    var link = document.createElement('a');
+    link.download = '心靈小物_' + speciesName + '.png';
+    link.href = cvs.toDataURL('image/png');
+    link.click();
+  }).catch(function(err){
+    console.error('下載失敗', err);
+    alert('下載失敗，請再試一次');
+  });
+}
+
+function wrapText(ctx, text, x, y, maxW, lineH){
+  var chars = text.split(''), line = '', yy = y;
+  for(var i=0;i<chars.length;i++){
+    var test = line + chars[i];
+    if(ctx.measureText(test).width > maxW && line){
+      ctx.fillText(line, x, yy); line = chars[i]; yy += lineH;
+    } else { line = test; }
+  }
+  if(line) ctx.fillText(line, x, yy);
+}
 function copyResult(){
   if(!resultData) return;
   var d = resultData;
@@ -915,7 +1097,9 @@ function copyResult(){
 }
 function restart(){ resultData = null; startQuiz(); }
 
-/* ============ 初始化 ============ */
+/* ============================================================
+   初始化
+   ============================================================ */
 (function init(){
   var box = document.getElementById('floaties');
   var chars = ['🌙','✨','🫧','🍃','💫','🌸','⭐','🦋'];
